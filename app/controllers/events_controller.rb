@@ -15,6 +15,7 @@ class EventsController < ApplicationController
 	flash[:success] = "Event created!"
 	redirect_to root_url
     else
+	flash[:fail] = "Event not created :("
         render 'static_pages/home'
     end
   end
@@ -34,7 +35,7 @@ class EventsController < ApplicationController
   private
 
     def event_params
-	params.require(:event).permit(:content)
+	params.require(:event).permit(:content, :location, :name, :date)
     end
 
 end
