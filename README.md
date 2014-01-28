@@ -1,2 +1,1 @@
-This is a sample application by Adam Nottingham following the Hartl rails tutorial.
-
+This is an application created by Adam Nottingham built with Ruby on Rails and implementing rspec, capybara, bootstrap for deployment on heroku
