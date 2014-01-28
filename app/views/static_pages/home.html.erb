@@ -7,7 +7,22 @@
 <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary"%>
 <p>Or <%= link_to "sign in", signin_path %> to post your event</p>
 <% else %>
-<%= link_to "Post new event", '#', class: "btn btn-large btn-primary"%>
+<%= link_to "Post new event", new_event_path, class: "btn btn-large btn-primary"%>
 <% end %>
 </div>
-
+<table>
+<tr>
+<th>Event Name</th>
+<th>Location</th>
+<th>Event Type</th>
+<th>Date</th>
+</tr>
+<% Event.all.each do |event| %>
+<tr>
+<td><%=event.name%></td>
+<td><%=event.id%></td>
+<td> Fun event </td>
+<td><%=event.date%></td>
+</tr>
+<% end %>
+</table>
