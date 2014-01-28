@@ -3,6 +3,11 @@
 <h2>
 	This is the home page for everything around town during<a href="http://www.sxsw.com"> SXSW</a>
 </h2>
+<% if !signed_in? %>
 <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary"%>
+<p>Or <%= link_to "sign in", signin_path %> to post your event</p>
+<% else %>
+<%= link_to "Post new event", '#', class: "btn btn-large btn-primary"%>
+<% end %>
 </div>
 
