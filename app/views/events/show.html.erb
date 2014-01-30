@@ -1,6 +1,28 @@
 <% provide(:title, @event.name) %>
 <h1><%= @event.name %></h1>
-<p class="single_event"><%= @event.content %></p>
+<div class="single_event"><%= simple_format(@event.content) %></div>
 <div class="event_sidebar">
-Test Area
+<h3><%= @event.date.strftime('%A, %b %d') %></h3>
+<h4><%= @event.tstart.strftime('%I:%M %p') %> - <%= @event.tend.strftime('%I:%M %p') %></h4>
+<br>
+<b><%=@event.location %></b>
+<p><%= @event.address %></p>
+
 </div>
+
+<hr>
+<p class="single_event">
+<b>Cost: </b>
+<% if @event.price == 0 %>
+Free!
+<% else %>
+$<%= @event.price %>
+<% end %>
+<br>
+<b>Ages: </b>
+
+<br>
+<b>Tickets/RSVP: </b>
+</p>
+
+
