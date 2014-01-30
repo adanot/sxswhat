@@ -4,13 +4,12 @@ float:right;
 
 }
 
-@import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
 /*mixins, variables, etc */
 
 $grayMediumLight: #eaeaea;
-
+$grayLighter: #999;
 @mixin box_sizing {
 	-mox-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
