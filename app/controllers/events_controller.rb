@@ -8,12 +8,21 @@ class EventsController < ApplicationController
   def edit
 
   end
+  def destroy
+	Event.find(params[:id]).destroy
+	flash[:success] = "Event deleted"
+	redirect_to root_url
+  end
+
+  def index
+	@events = Event.paginate(:page => params[:page], :per_page => 30)
+  end 
  
   def create
     @event = current_user.events.build(event_params)
     if @event.save
 	flash[:success] = "Event created!"
-	redirect_to root_url
+	redirect_to @event
     else
 	flash[:fail] = "Event not created :("
         render 'static_pages/home'

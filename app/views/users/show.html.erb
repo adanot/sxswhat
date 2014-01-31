@@ -9,4 +9,8 @@
 		</section>
 	</aside>
 </div>
-
+<div class="row">
+				<% Event.find_by_user_id(@user.id).all.each do |event| %> 
+					<%= link_to event.name, event %>
+				<% end %>
+</div>

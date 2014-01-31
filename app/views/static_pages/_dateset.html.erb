@@ -1,0 +1,15 @@
+<% require 'set' %>
+<% eventSet = Set.new %>
+
+<% Event.all.each do |event| %>
+<% eventSet.add(event.date.strftime('%A, %b, %d')) %>
+<% end %>
+
+<% eventSet.each do |setd| %>
+<ul>
+<li> <%= setd %></li>
+</ul>
+<% end %>
+
+
+

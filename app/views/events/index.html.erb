@@ -1,10 +1,7 @@
 <% provide(:title, 'All Events') %>
-<h1>All Events</h1>
-
-<ul class="event">
-  <% @events.each do |event| %>
-	<li>
-	  
-
-
-</ul> 
+<h1>All Events </h1>
+<ul class="events">
+	<% @events.each do |event| %>
+	  <%= render event %>
+	<% end %>
+</ul>
