@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   def show
 	@user = User.find(params[:id])
   end
+ 
+  def calendar
+
+  end
 
   def new
 	@user = User.new
@@ -30,6 +34,7 @@ class UsersController < ApplicationController
 
   def create
 	@user = User.new(user_params)
+	@user.calendar = %w(head)
 	if @user.save
 		sign_in @user
 		flash[:success] = "Welcome to SXSWHAT!"

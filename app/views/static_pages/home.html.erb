@@ -1,50 +1,50 @@
 <% require 'set' %>
 <% eventSet = Set.new %>
 <div class="center hero-unit">
-<h1>SXSWHAT?</h1>
-<h2>
-	This is the home page for everything around town during<a href="http://www.sxsw.com"> SXSW</a>
-</h2>
-<% if !signed_in? %>
-<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary"%>
-<p>Or <%= link_to "sign in", signin_path %> to post your event</p>
-<% else %>
-<%= link_to "Post new event", new_event_path, class: "btn btn-large btn-primary"%>
-<% end %>
+  <h1>SXSWHAT?</h1>
+  <h2>
+    This is the home page for everything around town during <a href="http://www.sxsw.com">SXSW</a>
+  </h2>
+  <% if !signed_in? %>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary"%>
+    <p>Or
+      <%= link_to "sign in", signin_path %>
+      to post your event</p>
+  <% else %>
+    <%= link_to "Post new event", new_event_path, class: "btn btn-large btn-primary"%>
+  <% end %>
 </div>
 <% Event.all.each do |event| %>
-<% eventSet.add(event.date.strftime('%A, %b, %d')) %>
+  <% eventSet.add(event.date.strftime('%A, %b, %d')) %>
 <% end %>
 <ul style="list-style:none">
-<% eventSet.each do |setd| %>
-<li><h4> <%= setd %></h4></li>
-
-<table>
-<tr>
-<th>Event Name</th>
-<th>Location</th>
-<th>Event Type</th>
-<th>Time</th>
-<th></th>
-</tr>
-<% Event.all.each do |event| %>
-<% if event.date.strftime('%A, %b, %d') == setd %>
-<tr>
-<td><%= link_to event.name, event %></td>
-<td><%=event.location%></td>
-<td>Fun event</td>
-<td><%=event.tstart.strftime('%I:%M %p') %></td>
-
-<td>
-<% if event.drinks == true %>
-<span class="glyphicon glyphicon-glass"></span>
-<% end %>
-<span class="glyphicon glyphicon-calendar"></span>
-</td>
-</tr>
-<% end %>
-<% end %>
-</table>
-<% end %>
+  <% eventSet.each do |setd| %>
+    <li><h4>
+        <%= setd %></h4></li>
+    <table>
+      <tr>
+        <th>Event Name</th>
+        <th>Location</th>
+        <th>Event Type</th>
+        <th>Time</th>
+        <th></th>
+      </tr>
+      <% Event.all.each do |event| %>
+        <% if event.date.strftime('%A, %b, %d') == setd %>
+          <tr>
+            <td><%= link_to event.name, event %></td>
+            <td><%=event.location%></td>
+            <td>Fun event</td>
+            <td><%=event.tstart.strftime('%-I:%M %p') %></td>
+            <td>
+              <% if event.drinks == true %>
+                <span class="glyphicon glyphicon-glass"></span>
+              <% end %>
+              <span class="glyphicon glyphicon-calendar"></span>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  <% end %>
 </ul>
-

@@ -1,0 +1,101 @@
+<%= provide(:title, 'New event') %>
+<h1>New Event</h1>
+<head>
+  <style>
+    #event_tstart_4i, #event_tstart_5i, #event_tend_4i, #event_tend_5i{
+    width:auto;
+    
+    }
+    
+    .input-prepend .add-on, .input-prepend .btn{
+    height:17px;
+    border-radius: 3px;
+    
+    }
+  </style>
+</head>
+<%= form_for(@event) do |f| %>
+  <%= render 'shared/event_error_messages' %>
+  <div class="row">
+    <div class="span3">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      Venue
+      <%= f.text_field :location %>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+    <div class= "row">
+      <div class="span6 offset1">
+        <%= render 'shared/event_error_messages' %>
+        Description
+        <%= f.text_area :content, size: "20x10" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span6">
+        Tickets/RSVP(link)
+        <%= f.text_field :link %>
+      </div>
+    </div>
+    <div class="row">
+      <hr>
+    </div>
+    <div class="row">
+      <div class="span3">
+        <%= f.label :date %>
+        <%= f.text_field :date, :placeholder => "mm/dd/yyy" %>
+      </div>
+      <div class="span4 offset1">
+      </br>
+      Start Time
+      <%= f.time_select :tstart, { :ampm => true, :minute_step=> 15 } %>
+    </br>
+    End Time&nbsp;
+    <%= f.time_select :tend, { :ampm => true, :minute_step => 15 } %>
+  </div>
+</div>
+<div class="row">
+  <hr>
+</div>
+<div class="row">
+  <div class="span3">
+    <div class="input-prepend">
+      <%= f.label :price %>
+      <span class="add-on">
+        $</span>
+      <%= f.text_field :price, :placeholder => "15", :default => 0 %>
+    </div>
+  </div>
+  <div class="span3 offset1">
+    &nbsp;
+    <%= f.select :age, options_for_select([['All Ages', 'All Ages'] , ['18+', '18+'] ,['21+', '21+']]) %>
+  </div>
+  <div class="span3 offset1">
+    <br>
+    Free drinks? &nbsp;
+    <%= f.check_box :drinks, :default => false %>
+  </div>
+</div>
+<div class="row">
+  <div class="span3 offset4">
+    &nbsp;
+    <%= f.select :type, options_for_select([['Event Type'] , ['Music', 'Music'] ,['Film', 'Film'] , ['Party', 'Party']]) %>
+  </div>
+</div>
+<div class="row">
+  <div class="span6">
+    <% f.text_field :price, id: 'price', type: 'text',
+				data: { 'slider-id' => 'price',
+					'slider-min' => '0',
+					'slider-max' => '50',
+					'slider-step' => '1',
+					'slider-value' => '15' } %>
+  </div>
+</div>
+<div class= "row">
+  <br>
+  <div class="span6 offset5">
+    <%= f.submit "Create event", class: "btn btn-large btn-primary" %>
+  </div>
+</div>

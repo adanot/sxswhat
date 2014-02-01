@@ -44,6 +44,12 @@ border-radius: 3px;
 </div>
 </div>
 <div class="row">
+<div class="span6">
+    Tickets/RSVP(link)
+<%= f.text_field :link %>
+</div>
+</div>
+<div class="row">
 <hr>
 </div>
 <div class="row">
@@ -77,7 +83,7 @@ border-radius: 3px;
 </div>
   <div class="span3 offset1">
 	&nbsp;
-	<%= select_tag(:age, options_for_select([['All Ages', 1] , ['18+', 2] ,['21+', 3]])) %>
+	<%= f.select :age, options_for_select([['All Ages', 'All Ages'] , ['18+', '18+'] ,['21+', '21+']]) %>
 	</div>
    <div class="span3 offset1">
 	<br>
@@ -85,6 +91,14 @@ border-radius: 3px;
 	<%= f.check_box :drinks, :default => false %>
    </div>
 
+</div>
+
+<div class="row">
+
+  <div class="span3 offset4">
+	&nbsp;
+	<%= f.select :type, options_for_select([['Event Type'] , ['Music', 'Music'] ,['Film', 'Film'] , ['Party', 'Party']]) %>
+	</div>
 </div>
 
 <div class="row">
