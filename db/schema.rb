@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131051935) do
+ActiveRecord::Schema.define(version: 20140201003417) do
 
   create_table "events", force: true do |t|
     t.text     "content",    limit: 255
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140131051935) do
     t.datetime "updated_at"
     t.date     "date"
     t.string   "location"
-    t.integer  "age"
+    t.string   "age"
     t.integer  "type"
     t.time     "tstart"
     t.time     "tend"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140131051935) do
     t.boolean  "drinks"
     t.string   "address"
     t.boolean  "test"
+    t.string   "link"
   end
 
   create_table "users", force: true do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140131051935) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin"
+    t.text     "calendar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
