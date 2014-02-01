@@ -1,16 +1,39 @@
 <%= provide(:title, @user.name) %>
 <div class="row">
-	<aside class="span4">
-		<section>
-			<h1>	
-				<%= gravatar_for @user %>
-				<%= @user.name %>
-			</h1>
-		</section>
-	</aside>
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
 </div>
 <div class="row">
-				<% Event.find_by_user_id(@user.id).all.each do |event| %> 
-					<%= link_to event.name, event %>
-				<% end %>
-</div>
+  <h3>
+    Events created by you
+  </h3>
+  <table>
+    <tr>
+      <th>Event Name</th>
+      <th>Location</th>
+      <th>Event Type</th>
+      <th>Time</th>
+      <tr>
+        <% Event.find(:all, :conditions=>['user_id=?',101]).each do |event| %>
+          <tr>
+            <td><%= link_to event.name, event %></td>
+            <td><%= event.location %></td>
+            <td>
+              Type
+            </td>
+            <td><%= event.tstart.strftime('%I:%M %p') %></td>
+            <td>
+              <% if event.drinks == true %>
+                <span clas="glyphicon glyphicon-glass"></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
