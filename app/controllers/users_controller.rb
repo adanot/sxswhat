@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 
   def create
 	@user = User.new(user_params)
-	@user.calendar = %w(head)
 	if @user.save
 		sign_in @user
 		flash[:success] = "Welcome to SXSWHAT!"
