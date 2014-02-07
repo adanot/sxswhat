@@ -17,16 +17,12 @@
     <tr>
       <th>Event Name</th>
       <th>Location</th>
-      <th>Event Type</th>
       <th>Time</th>
       <tr>
         <% Event.find(:all, :conditions=>['user_id=?',current_user.id]).each do |event| %>
           <tr>
             <td><%= link_to event.name, event %></td>
             <td><%= event.location %></td>
-            <td>
-              Type
-            </td>
             <td><%= event.tstart.strftime('%I:%M %p') %></td>
             <td>
               <% if event.drinks == true %>

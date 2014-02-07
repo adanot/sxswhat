@@ -54,7 +54,7 @@ border-radius: 3px;
 </div>
 <div class="row">
 	<div class="span3">
-
+	
 	<%= f.label :date %>
 	<%= f.text_field :date, :placeholder => "mm/dd/yyy" %>
 </div>
@@ -72,12 +72,49 @@ border-radius: 3px;
 <div class="row">
 <hr>
 </div>
+
+
+<%#<script type="text/javascript">
+function userTyped(cb1, cb2, e){
+  if(e.value.length > 0){
+    document.getElementById(cb1).disabled=true;
+    document.getElementById(cb2).disabled=true;
+  }else{
+    document.getElementById(cb1).disabled=false;
+    document.getElementById(cb2).disabled=false;
+  }
+}
+</script>%>
+
+<script type="text/javascript">
+$(function() {
+  $('#event_free, #event_rsvp').click(function(){
+	var cb1 = $('#event_free').is(':checked');
+	var cb2 = $('#event_rsvp').is(':checked');
+	$('#event_price').prop('disabled', (cb1 || cb2));
+  
+
+  });
+
+});
+</script>
+
+
 <div class="row">
    <div class="span3">
-<div class="input-prepend">
+	</br>
+	Free show&nbsp;
+	<%= f.check_box :free, :default => false %>
+	<br>
+	<br>
+	Free w/ RSVP&nbsp;
+	<%= f.check_box :rsvp, :default => false %>
+	<br>
+	<br>
 	<%= f.label :price %>
 	
-<span class="add-on"> $</span>
+<div class="input-prepend">
+<span class="add-on" style="height:100%"> $</span>
 	<%= f.text_field :price, :placeholder => "15", :default => 0 %>
    </div>
 </div>
