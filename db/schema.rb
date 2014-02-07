@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207162253) do
+ActiveRecord::Schema.define(version: 20140207201202) do
 
   create_table "events", force: true do |t|
     t.text     "content",    limit: 255
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20140207162253) do
     t.string   "address"
     t.boolean  "test"
     t.string   "link"
+    t.boolean  "free"
+    t.boolean  "rsvp"
   end
 
   create_table "users", force: true do |t|
