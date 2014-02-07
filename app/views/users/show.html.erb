@@ -20,7 +20,7 @@
       <th>Event Type</th>
       <th>Time</th>
       <tr>
-        <% Event.find(:all, :conditions=>['user_id=?',101]).each do |event| %>
+        <% Event.find(:all, :conditions=>['user_id=?',current_user.id]).each do |event| %>
           <tr>
             <td><%= link_to event.name, event %></td>
             <td><%= event.location %></td>

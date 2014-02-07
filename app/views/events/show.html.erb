@@ -9,7 +9,7 @@
   <br>
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
-  <p><%= button_to "Add to schedule", Event , :method =>  :add, :remote=>true %>
+  <%= link_to "Add to calendar", favorite_event_path(@event, type: "add"), method: :put %>
 </div>
 <hr>
 <p class="single_event">
@@ -26,5 +26,5 @@
   <%= @event.age %>
   <br>
   <b>Tickets/RSVP:
-  </b><a href="<%=@event.link%>"><%=@event.link%></a>
+  </b><%=link_to @event.link%>
 </p>

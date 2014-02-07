@@ -46,6 +46,7 @@ border-radius: 3px;
 <div class="row">
 <div class="span6">
     Tickets/RSVP(link)
+    <%= f.text_field :link %>
 </div>
 </div>
 <div class="row">
@@ -92,13 +93,6 @@ border-radius: 3px;
 
 </div>
 
-<div class="row">
-
-  <div class="span3 offset4">
-	&nbsp;
-	<%= f.select :type, options_for_select([['Event Type'] , ['Music', 'Music'] ,['Film', 'Film'] , ['Party', 'Party']]) %>
-	</div>
-</div>
 
 <div class="row">
 	<div class="span6">
