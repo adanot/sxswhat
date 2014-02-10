@@ -1,5 +1,3 @@
-<% require 'set' %>
-<% eventSet = Set.new %>
 <div class="center hero-unit">
   <h1>SXSWHAT?</h1>
   <h2>
@@ -15,10 +13,10 @@
   <% end %>
 </div>
 <% Event.all.each do |event| %>
-  <% eventSet.add(event.date.strftime('%A, %b, %d')) %>
+  <% event.add(event.date.strftime('%A, %b, %d')) %>
 <% end %>
 <ul style="list-style:none">
-  <% eventSet.each do |setd| %>
+  <% event.each do |setd| %>
     <li><h4>
         <%= setd %></h4></li>
     <table>
