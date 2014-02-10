@@ -21,7 +21,6 @@
         <th></th>
       </tr>
       <% Event.all.each do |event| %>
-        <% if event.date.strftime('%A, %b, %d') == setd %>
           <tr>
             <td><%= link_to event.name, event %></td>
             <td><%=event.location%></td>
@@ -33,7 +32,6 @@
               <span class="glyphicon glyphicon-calendar"></span>
             </td>
           </tr>
-        <% end %>
       <% end %>
     </table>
   <% end %>
