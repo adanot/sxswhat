@@ -12,13 +12,7 @@
     <%= link_to "Post new event", new_event_path, class: "btn btn-large btn-primary"%>
   <% end %>
 </div>
-<% Event.all.each do |event| %>
-  <% event.add(event.date.strftime('%A, %b, %d')) %>
-<% end %>
 <ul style="list-style:none">
-  <% event.each do |setd| %>
-    <li><h4>
-        <%= setd %></h4></li>
     <table>
       <tr>
         <th>Event Name</th>
