@@ -26,6 +26,7 @@ $grayLighter: #999;
 	background-color: red;
 	float:left;
 }
+
 .event_sidebar{
 	width: 35%;
 	background-color:blue;
@@ -40,7 +41,8 @@ html {
 }
 
 body { 
-	padding-top: 60px;
+	padding-top: 70px;
+	background-image:url('/images/bg/cream_pixels_@2X.png');
 }
 
 section {
@@ -86,8 +88,6 @@ p {
 	font-size: 1.1em;
 	line-height: 1.7em;
 }
-
-/* header */
 
 #logo {
 	float: left;
