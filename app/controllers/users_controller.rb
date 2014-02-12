@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update]
+  before_action :signed_in_user, only: [:index, :edit, :update, :calendar]
   before_action :correct_user,	 only: [:edit, :update]
   before_action :admin_user,	 only: :destroy
   def show
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
  
   def calendar
-
+    @events = (current_user.user_calendars.collect(&:event) + current_user.events ).uniq
   end
 
   def new

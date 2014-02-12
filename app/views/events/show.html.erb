@@ -1,3 +1,13 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=178566635600604";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
 <% provide(:title, @event.name) %>
 <h1><%= @event.name %></h1>
 <div class="single_event"><%= simple_format(@event.content) %></div>
@@ -9,22 +19,25 @@
   <br>
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
-  <%= link_to "Add to calendar", favorite_event_path(@event, type: "add"), method: :put %>
+  <% if current_user && current_user.user_calendars.collect(&:event).include?(@event) %>
+    <%= link_to "Added to calendar", '#' , class: 'btn btn-primary' %>
+  <% else %>  
+    <%= link_to "Add to calendar", favorite_event_path(@event, type: "add"), method: :put , class: 'btn btn-primary' %>
+  <% end %>
+  <br/>
+  <br/>
+  <br/>
+  <div class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>  
 </div>
 <hr>
 <p class="single_event">
   <b>Cost:
   </b>
-  <% if @event.price == 0 %>
-    Free!
-  <% else %>
-    $<%= @event.price %>
-  <% end %>
+    <%= @event.actual_price %>
   <br>
   <b>Ages:
   </b>
   <%= @event.age %>
   <br>
-  <b>Tickets/RSVP:
-  </b><%=link_to @event.link%>
+  <%=link_to 'Tickets/RSVP', @event.link %>
 </p>

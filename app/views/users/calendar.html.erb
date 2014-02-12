@@ -1,1 +1,49 @@
-<h1>Calendar Page</h1>
+<h1>Calendar</h1>
+<script>
+	$(document).ready(function() {
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			editable: false,
+			events: [
+                                <% counter = 0 %>
+                                <% @events.each do |event| %>
+                                  <% counter += 1 %>
+				  {
+                                    title: '<%= event.name %>',
+                                    start: new Date( <%= Time.parse(event.date.to_s).utc.to_i * 1000 %>),
+                                    url: '<%= url_for(event) %>'
+                                  }
+                                  <%= "," if counter < @events.count %>
+				<% end %>
+			]
+		});
+		
+	});
+
+</script>
+<style>
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+	#calendar {
+		width: 900px;
+		margin: 0 auto;
+		}
+
+</style>
+</head>
+<body>
+<div id='calendar'></div>

@@ -12,6 +12,72 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require bootstrap
 //= require turbolinks
+//= require datepicker
+//= require fullcalendar
+//= require bootstrap-timepicker
 //= require_tree .
+
+$("document").ready(function(){
+ var nowTemp = new Date();
+  
+  var startDate = new Date(2014, 2 , 07, 0, 0, 0, 0);
+  var endDate = new Date(2014, 2 , 16, 0, 0, 0, 0);
+  $(".datepicker").datepicker({
+    onRender: function(date) {
+      if( date.valueOf() < startDate.valueOf() || date.valueOf() > endDate.valueOf() ){
+        return 'disabled' ;
+      }else{
+        return "" ;
+      }
+    }
+  });
+
+  $("#free_price, #rsvp, #paid, #free_drink").on('change',function(){
+    if( $("#free_price").is(":checked") ){
+      $(".free").show();
+    }else{
+      $(".free").hide();
+    }
+
+    if( $("#rsvp").is(":checked") ){
+      $(".rsvp").show();
+    }else{
+      $(".rsvp").hide();
+    }
+
+    if( $("#paid").is(":checked") ){
+      $(".paid").show();
+    }else{
+      $(".paid").hide();
+    }
+
+    if( $("#free_drink").is(":checked") ){
+      $(".drink").show();
+    }else{
+      $(".drink").hide();
+    }
+    if( !$("#free_price").is(":checked") && !$("#rsvp").is(":checked") && !$("#paid").is(":checked") && !$("#free_drink").is(":checked") ){
+      $(".all").show();
+    }
+    $("#event_date").trigger( "change" );
+    
+    $(".all_date").each(function(){
+      if( $(this).find('tbody tr :visible').length == 0 ){
+        $(this).hide();
+      }
+    });
+
+    //if( $(this).find('tr:visible').length == 0 ){
+      console.log( $(this).find('tr:visible').length );
+    //}
+    
+  });
+
+  $("#event_date").on('change',function(){
+    $(".all_date").hide();
+    $("." + $("#event_date").val()).show();
+  });
+});

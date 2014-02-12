@@ -13,15 +13,40 @@
   <% end %>
 </div>
 <ul style="list-style:none">
-    <table>
-      <tr>
-        <th>Event Name</th>
-        <th>Location</th>
-        <th>Time</th>
-        <th></th>
-      </tr>
-      <% Event.all.each do |event| %>
-          <tr>
+  <table>
+    <tr>
+      <td style='vertical-align: top;'><b>Filters</b></td>
+      <td style='vertical-align: top;'><input id='free_price' type=checkbox /> Free(price)</td>
+      <td style='vertical-align: top;'><input id='rsvp' type=checkbox /> Rsvp</td>
+      <td style='vertical-align: top;'><input id='paid' type=checkbox /> Paid</td>
+      <td style='vertical-align: top;'><input id='free_drink' type=checkbox /> Free Drink</td>
+      <td>
+        Date
+        <select id='event_date' style='width: 150px;vertical-align: baseline;'>
+           <option value='all_date' > All </option>
+           <% @events_collection.each do |event_date, event_list| %>
+             <option value='<%= event_date.to_s %>' ><%= event_date.to_s(:long) %> </option>
+           <% end %>
+        </select> 
+      </td>
+    </tr>
+  </table>
+  <% @events_collection.each do |event_date, event_list| %>
+    <table class='table <%= events_collection_class(event_list) + " " + event_date.to_s %>'>
+      <thead>
+        <tr>
+          <th colspan=4><h3> Events on <%= event_date.to_s(:long) %> </h3> </th>
+        </tr>
+        <tr>
+          <th>Event Name</th>
+          <th>Location</th>
+          <th>Time</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% event_list.each do |event| %>
+          <tr class='<%= event_class(event) %>' >
             <td><%= link_to event.name, event %></td>
             <td><%=event.location%></td>
             <td><%=event.tstart.strftime('%-I:%M %p') %></td>
@@ -29,10 +54,11 @@
               <% if event.drinks == true %>
                 <span class="glyphicon glyphicon-glass"></span>
               <% end %>
-              <span class="glyphicon glyphicon-calendar"></span>
+              <%= link_to "<span class='glyphicon glyphicon-calendar'></span>".html_safe, favorite_event_path(event), method: :put %>
             </td>
           </tr>
       <% end %>
+      </tbody>
     </table>
   <% end %>
 </ul>
