@@ -1,5 +1,24 @@
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
+
+tr.filters{
+	background-color: rgba(25,36,44,0.8);
+	color: #FFF;
+	text-align: center;
+
+}
+
+td.filters{
+margin-top: 40px;
+
+}
+ul {
+	
+	margin: 0 0 0 0;
+
+}
+
+
 /*mixins, variables, etc */
 
 $grayMediumLight: #eaeaea;
