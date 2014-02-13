@@ -39,5 +39,7 @@
   </b>
   <%= @event.age %>
   <br>
+  <% if @event.link.length != 0 %>
   <%=link_to 'Tickets/RSVP', @event.link %>
+  <% end %>
 </p>
