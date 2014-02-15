@@ -133,8 +133,8 @@ function userTyped(cb1, cb2, e){
   <div class= "row">
     <br>
     <div class="span6 offset5">
-      <%= f.submit "Create event", class: "btn btn-large btn-primary" if params[:action] == 'new' %>
-      <%= f.submit "Update event", class: "btn btn-large btn-primary" if params[:action] == 'edit' %>
+      <%= f.submit "Create event", class: "btn btn-large btn-primary" if params[:action] == 'new' || params[:action] == 'create' %>
+      <%= f.submit "Update event", class: "btn btn-large btn-primary" if params[:action] == 'edit' || params[:action] == 'update' %>
     </div>
   </div>
 <% end %>

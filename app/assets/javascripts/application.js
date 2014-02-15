@@ -18,6 +18,8 @@
 //= require datepicker
 //= require fullcalendar
 //= require bootstrap-timepicker
+//= require underscore 
+//= require gmaps/google
 //= require_tree .
 
 $("document").ready(function(){
