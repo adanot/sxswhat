@@ -7,7 +7,6 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
-
 <script>
 $("document").ready(function(){
   handler = Gmaps.build('Google');
@@ -15,7 +14,7 @@ $("document").ready(function(){
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
-    handler.getMap().setZoom(15);
+    handler.getMap().setZoom(12);
   });
 });
 </script>
@@ -56,4 +55,5 @@ $("document").ready(function(){
   <% if @event.link.length != 0 %>
   <%=link_to 'Tickets/RSVP', @event.link %>
   <% end %>
+<div style="float:right;"><b>Created by: </b><%= User.find_by_id(@event.user_id).name %><div>
 </p>
