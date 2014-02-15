@@ -1,10 +1,23 @@
 <head>
   <script type="text/javascript">
     $(document).ready(function(){
-      $('.timepicker').timepicker({
-        minuteStep: 5,
-        showInputs: false,
+      start_timepicker = $('.start_timepicker').timepicker({
+        minuteStep: 15,
+        showInputs: true,
         disableFocus: true
+      });
+      $('.end_timepicker').timepicker({
+        minuteStep: 15,
+        showInputs: true,
+        disableFocus: true
+      });
+      $('.end_timepicker').on('click',function(e){
+        $('.start_timepicker').timepicker('hideWidget');
+        e.preventDefault();
+        return false;
+      });
+      $(document).on("click",function(){
+        $('.end_timepicker').timepicker('hideWidget');
       });
     });
   </script>
@@ -58,10 +71,10 @@
     <div class="span4 offset1">	
       </br>
       Start Time
-      <%= f.text_field :tstart, class: 'timepicker span2' %>
+      <%= f.text_field :tstart, class: 'start_timepicker span2' %>
       </br>
       End Time&nbsp; 
-      <%= f.text_field :tend, class: 'timepicker span2' %>
+      <%= f.text_field :tend, class: 'end_timepicker span2' %>
     </div>
   </div>
 
