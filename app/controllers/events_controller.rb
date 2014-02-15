@@ -6,7 +6,19 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find params[:id]
+  end
 
+  def update
+    @event = Event.find params[:id]
+    @event.update_attributes(event_params)
+    if @event.save
+        flash[:success] = "Event updated!"
+        redirect_to @event
+    else
+        flash[:fail] = "Event not updated :("
+        render action: :edit
+    end
   end
 
   def destroy
