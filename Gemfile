@@ -66,3 +66,5 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'american_date'
+gem 'gmaps4rails'
+gem "geocoder"

@@ -8,6 +8,17 @@
 }(document, 'script', 'facebook-jssdk'));
 </script>
 
+<script>
+$("document").ready(function(){
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(15);
+  });
+});
+</script>
 <% provide(:title, @event.name) %>
 <h1><%= @event.name %></h1>
 <div class="single_event"><%= simple_format(@event.content) %></div>
@@ -19,6 +30,9 @@
   <br>
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
+  <div style='width: 400px;'>
+    <div id="map" style='width: 400px; height: 400px;'></div>
+  </div>
   <% if current_user && current_user.user_calendars.collect(&:event).include?(@event) %>
     <%= link_to "Added to calendar", '#' , class: 'btn btn-primary' %>
   <% else %>  

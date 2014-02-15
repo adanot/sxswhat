@@ -1,0 +1,154 @@
+<head>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      start_timepicker = $('.start_timepicker').timepicker({
+        minuteStep: 15,
+        showInputs: true,
+        disableFocus: true
+      });
+      $('.end_timepicker').timepicker({
+        minuteStep: 15,
+        showInputs: true,
+        disableFocus: true
+      });
+      $('.end_timepicker').on('click',function(e){
+        $('.start_timepicker').timepicker('hideWidget');
+        e.preventDefault();
+        return false;
+      });
+      $(document).on("click",function(){
+        $('.end_timepicker').timepicker('hideWidget');
+      });
+    });
+  </script>
+  <style>
+    #event_tstart_4i, #event_tstart_5i, #event_tend_4i, #event_tend_5i{
+      width:auto;
+    }
+
+    .input-prepend .add-on, .input-prepend .btn{
+      height:17px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<%= form_for(@event) do |f| %>
+  <%= render 'shared/event_error_messages' %>
+  <div class="row">
+    <div class="span3">	
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      Venue
+      <%= f.text_field :location %>
+	
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+
+    <div class= "row">
+    <div class="span6 offset1">
+      Description
+      <%= f.text_area :content, size: "20x10" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6">
+      Tickets/RSVP(link)
+      <%= f.text_field :link, placeholder: 'http://www.examplesite.com/tickets' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <hr>
+  </div>
+  <div class="row">
+    <div class="span3">	
+      <%= f.label :date %>
+      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker', value: calendar_starting_date %>
+    </div>
+
+    <div class="span4 offset1">	
+      </br>
+      Start Time
+      <%= f.text_field :tstart, class: 'start_timepicker span2' %>
+      </br>
+      End Time&nbsp; 
+      <%= f.text_field :tend, class: 'end_timepicker span2' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <hr>
+  </div>
+
+
+<%#<script type="text/javascript">
+function userTyped(cb1, cb2, e){
+  if(e.value.length > 0){
+    document.getElementById(cb1).disabled=true;
+    document.getElementById(cb2).disabled=true;
+  }else{
+    document.getElementById(cb1).disabled=false;
+    document.getElementById(cb2).disabled=false;
+  }
+}
+</script>%>
+
+  <script type="text/javascript">
+    $(function() {
+      $('#event_free, #event_rsvp').click(function(){
+	var cb1 = $('#event_free').is(':checked');
+	var cb2 = $('#event_rsvp').is(':checked');
+	$('#event_price').prop('disabled', (cb1 || cb2));
+      });
+    });
+  </script>
+
+
+  <div class="row">
+    <div class="span3">
+      </br>
+      Free show&nbsp;
+      <%= f.check_box :free, :default => false %>
+      <br>
+      <br>
+      Free w/ RSVP&nbsp;
+      <%= f.check_box :rsvp, :default => false %>
+      <br>
+      <br>
+      <%= f.label :price %>	
+      <div class="input-prepend"> 
+        <span class="add-on" style="height:100%"> $</span>
+	<%= f.text_field :price, :placeholder => "15", :default => 0 %>
+      </div>
+    </div>
+    <div class="span3 offset1">
+      &nbsp;
+      <%= f.select :age, options_for_select([['All Ages', 'All Ages'] , ['18+', '18+'] ,['21+', '21+']]) %>
+    </div>
+    <div class="span3 offset1">
+      <br>
+      Free drinks? &nbsp;
+      <%= f.check_box :drinks, :default => false %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span6">
+      <% f.text_field :price, id: 'price', type: 'text',
+				data: { 'slider-id' => 'price',
+					'slider-min' => '0',
+					'slider-max' => '50',
+					'slider-step' => '1',
+					'slider-value' => '15' } %>
+    </div>
+  </div>
+  <div class= "row">
+    <br>
+    <div class="span6 offset5">
+      <%= f.submit "Create event", class: "btn btn-large btn-primary" if params[:action] == 'new' || params[:action] == 'create' %>
+      <%= f.submit "Update event", class: "btn btn-large btn-primary" if params[:action] == 'edit' || params[:action] == 'update' %>
+    </div>
+  </div>
+<% end %>
+

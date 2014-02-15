@@ -18,13 +18,45 @@
 //= require datepicker
 //= require fullcalendar
 //= require bootstrap-timepicker
+//= require underscore 
+//= require gmaps/google
 //= require_tree .
 
+function findUrls( text )
+{
+    var source = (text || '').toString();
+    var urlArray = [];
+    var url;
+    var matchArray;
+
+    // Regular expression to find FTP, HTTP(S) and email URLs.
+    var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g;
+
+    // Iterate through any URLs in the text.
+    while( (matchArray = regexToken.exec( source )) !== null )
+    {
+        var token = matchArray[0];
+        urlArray.push( token );
+    }
+    return urlArray;
+}
+
 $("document").ready(function(){
- var nowTemp = new Date();
+  var nowTemp = new Date();
   
   var startDate = new Date(2014, 2 , 07, 0, 0, 0, 0);
   var endDate = new Date(2014, 2 , 16, 0, 0, 0, 0);
+  
+  $("#event_content").on("change",function(){
+    content = $("#event_content").val();
+
+   urls = findUrls(content);
+
+   if(urls.length > 0){
+     $("#event_link").val(urls[0]);
+   }
+  });
+
   $(".datepicker").datepicker({
     onRender: function(date) {
       if( date.valueOf() < startDate.valueOf() || date.valueOf() > endDate.valueOf() ){
@@ -36,6 +68,7 @@ $("document").ready(function(){
   });
 
   $("#free_price, #rsvp, #paid, #free_drink").on('change',function(){
+    $(".all").hide();
     if( $("#free_price").is(":checked") ){
       $(".free").show();
     }else{
@@ -65,15 +98,10 @@ $("document").ready(function(){
     $("#event_date").trigger( "change" );
     
     $(".all_date").each(function(){
-      if( $(this).find('tbody tr :visible').length == 0 ){
+      if( $(this).find('tr.all:visible').length == 0 ){
         $(this).hide();
       }
     });
-
-    //if( $(this).find('tr:visible').length == 0 ){
-      console.log( $(this).find('tr:visible').length );
-    //}
-    
   });
 
   $("#event_date").on('change',function(){
@@ -81,3 +109,4 @@ $("document").ready(function(){
     $("." + $("#event_date").val()).show();
   });
 });
+
