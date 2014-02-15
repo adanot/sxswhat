@@ -31,9 +31,9 @@
       </td>
     </tr>
   </table>
+  <table class='table'>
   <% @events_collection.each do |event_date, event_list| %>
-    <table class='table <%= events_collection_class(event_list) + " " + event_date.to_s %>'>
-      <thead>
+    <tbody class='<%= events_collection_class(event_list) + " " + event_date.to_s %>'>
         <tr>
           <th colspan=4><h3><%= event_date.strftime('%A, %d %B') %> </h3> </th>
         </tr>
@@ -43,8 +43,6 @@
           <th>Time</th>
           <th></th>
         </tr>
-      </thead>
-      <tbody>
       <% event_list.each do |event| %>
           <tr class='<%= event_class(event) %>' >
             <td><%= link_to event.name, event %></td>
@@ -53,12 +51,14 @@
             <td>
               <% if event.drinks == true %>
                 <span class="glyphicon glyphicon-glass"></span>
+              <% else %>
+                &nbsp;&nbsp;&nbsp;
               <% end %>
               <%= link_to "<span class='glyphicon glyphicon-calendar'></span>".html_safe, favorite_event_path(event), method: :put %>
             </td>
           </tr>
       <% end %>
-      </tbody>
-    </table>
+    </tbody>
   <% end %>
+  </table>
 </ul>

@@ -36,6 +36,7 @@ $("document").ready(function(){
   });
 
   $("#free_price, #rsvp, #paid, #free_drink").on('change',function(){
+    $(".all").hide();
     if( $("#free_price").is(":checked") ){
       $(".free").show();
     }else{
@@ -65,15 +66,10 @@ $("document").ready(function(){
     $("#event_date").trigger( "change" );
     
     $(".all_date").each(function(){
-      if( $(this).find('tbody tr :visible').length == 0 ){
+      if( $(this).find('tr.all:visible').length == 0 ){
         $(this).hide();
       }
     });
-
-    //if( $(this).find('tr:visible').length == 0 ){
-      console.log( $(this).find('tr:visible').length );
-    //}
-    
   });
 
   $("#event_date").on('change',function(){
