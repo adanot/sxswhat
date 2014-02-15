@@ -72,25 +72,25 @@ $("document").ready(function(){
     if( $("#free_price").is(":checked") ){
       $(".free").show();
     }else{
-      $(".free").hide();
+    //  $(".free").hide();
     }
 
     if( $("#rsvp").is(":checked") ){
       $(".rsvp").show();
     }else{
-      $(".rsvp").hide();
+    //  $(".rsvp").hide();
     }
 
     if( $("#paid").is(":checked") ){
       $(".paid").show();
     }else{
-      $(".paid").hide();
+    //  $(".paid").hide();
     }
 
     if( $("#free_drink").is(":checked") ){
       $(".drink").show();
     }else{
-      $(".drink").hide();
+    //  $(".drink").hide();
     }
     if( !$("#free_price").is(":checked") && !$("#rsvp").is(":checked") && !$("#paid").is(":checked") && !$("#free_drink").is(":checked") ){
       $(".all").show();
