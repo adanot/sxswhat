@@ -14,7 +14,7 @@ $("document").ready(function(){
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
-    handler.getMap().setZoom(12);
+    handler.getMap().setZoom(15);
   });
 });
 </script>
@@ -29,18 +29,14 @@ $("document").ready(function(){
   <br>
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
-  <div style='width: 400px;'>
-    <div id="map" style='width: 400px; height: 400px;'></div>
-  </div>
   <% if current_user && current_user.user_calendars.collect(&:event).include?(@event) %>
     <%= link_to "Added to calendar", '#' , class: 'btn btn-primary' %>
   <% else %>  
     <%= link_to "Add to calendar", favorite_event_path(@event, type: "add"), method: :put , class: 'btn btn-primary' %>
   <% end %>
+  <div id="map"></div>
   <br/>
-  <br/>
-  <br/>
-  <div class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>  
+  <div style=" float:right;" class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>  
 </div>
 <hr>
 <p class="single_event">
@@ -55,5 +51,5 @@ $("document").ready(function(){
   <% if @event.link.length != 0 %>
   <%=link_to 'Tickets/RSVP', @event.link %>
   <% end %>
-<div style="float:right;"><b>Created by: </b><%= User.find_by_id(@event.user_id).name %><div>
+<div style="float:right;"><b>Created by: </b><%= link_to User.find_by_id(@event.user_id).name, User.find_by_id(@event.user_id) %><div>
 </p>
