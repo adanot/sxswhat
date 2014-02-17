@@ -38,6 +38,7 @@
           <th colspan=4><h3><%= event_date.strftime('%A, %d %B') %> </h3> </th>
         </tr>
         <tr>
+	  <th></th>
           <th>Event Name</th>
           <th>Location</th>
           <th>Time</th>
@@ -45,15 +46,18 @@
         </tr>
       <% event_list.each do |event| %>
           <tr class='<%= event_class(event) %>' >
-            <td><%= link_to event.name, event %></td>
-            <td><%=event.location%></td>
-            <td><%=event.tstart.strftime('%-I:%M %p') %></td>
-            <td>
+	    <td>
+
               <% if event.drinks == true %>
                 <span class="glyphicon glyphicon-glass"></span>
               <% else %>
                 &nbsp;&nbsp;&nbsp;
               <% end %>
+	    </td>
+            <td><%= link_to event.name, event %></td>
+            <td><%=event.location%></td>
+            <td><%=event.tstart.strftime('%-I:%M %p') %></td>
+            <td>
               <%= link_to "<span class='glyphicon glyphicon-calendar'></span>".html_safe, favorite_event_path(event), method: :put %>
             </td>
           </tr>

@@ -15,8 +15,10 @@ class Event < ActiveRecord::Base
   end 
 
   def actual_price
-    if self.free || self.rsvp
+    if self.free
       "Free"
+    elsif self.rsvp
+	"Free w/ RSVP"
     else
       self.price ? "$ " + self.price.to_s : "Free"
     end
