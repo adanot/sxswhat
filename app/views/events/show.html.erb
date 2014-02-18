@@ -36,7 +36,7 @@ $("document").ready(function(){
   <% end %>
   <div id="map"></div>
   <br/>
-  <div style=" float:right;" class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>  
+  <div style="positon:relative; left: -20px; float:right;" class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>  
 </div>
 <hr>
 <p class="single_event">
@@ -51,5 +51,5 @@ $("document").ready(function(){
   <% if @event.link.length != 0 %>
   <%=link_to 'Tickets/RSVP', @event.link %>
   <% end %>
-<div style="float:right;"><b>Created by: </b><%= link_to User.find_by_id(@event.user_id).name, User.find_by_id(@event.user_id) %><div>
+<div style="position: relative; right: -20px; float:right;"><b>Created by: </b><%= link_to User.find_by_id(@event.user_id).name, User.find_by_id(@event.user_id) %><div>
 </p>

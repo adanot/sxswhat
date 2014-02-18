@@ -7,7 +7,8 @@ class Event < ActiveRecord::Base
   validates :user_id, presence: true
   validates :address, presence: true
   validates :content, presence: true
-   validate :creation_conditions  
+  validate :creation_conditions 
+ 
 
   def creation_conditions
     errors[:base] << 'Ticket/RSVP link required for Free w/ RSVP events' if (self.rsvp &&  self.link.blank? )
