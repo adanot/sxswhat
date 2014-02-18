@@ -42,8 +42,10 @@ $("document").ready(function(){
   <br>
 
   <% if @event.link.length > 9 %>
-  <%=link_to 'Tickets/RSVP', @event.link %>
+  <%=link_to 'Tickets/RSVP Here', @event.link %>
   <% end %>
+  <br>
+  <br>
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
   <div id="map"></div>
