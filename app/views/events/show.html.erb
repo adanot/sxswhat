@@ -40,6 +40,10 @@ $("document").ready(function(){
   <%= @event.age %>
   <br>
   <br>
+
+  <% if @event.link.length > 9 %>
+  <%=link_to 'Tickets/RSVP', @event.link %>
+  <% end %>
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
   <div id="map"></div>
