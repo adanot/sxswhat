@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def full_title(page_title)
-		base_title = "Unofficial SXSW Drectory"
+		base_title = "SXSWHAT"
 		if page_title.empty? 
 			base_title
 		else

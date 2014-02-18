@@ -45,7 +45,7 @@ $("document").ready(function(){
   var nowTemp = new Date();
   
   var startDate = new Date(2014, 2 , 07, 0, 0, 0, 0);
-  var endDate = new Date(2014, 2 , 17, 0, 0, 0, 0);
+  var endDate = new Date(2014, 2 , 16, 0, 0, 0, 0);
   
   $("#event_content").on("change",function(){
     content = $("#event_content").val();
