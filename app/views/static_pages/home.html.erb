@@ -41,6 +41,7 @@
 	  <th></th>
           <th>Event Name</th>
           <th>Location</th>
+	  <th>Price</th>
           <th>Time</th>
           <th></th>
         </tr>
@@ -56,6 +57,7 @@
 	    </td>
             <td><%= link_to event.name, event %></td>
             <td><%=event.location%></td>
+	    <td><%= event.actual_price %></td>
             <td><%=event.tstart.strftime('%-I:%M %p') %></td>
             <td>
               <%= link_to "<span class='glyphicon glyphicon-calendar'></span>".html_safe, favorite_event_path(event), method: :put %>

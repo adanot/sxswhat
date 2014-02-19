@@ -22,10 +22,23 @@ $("document").ready(function(){
 <h1><%= @event.name %></h1>
 <div class="single_event"><%= simple_format(url_link(@event.content)) %></div>
 <div class="event_sidebar">
+
   <h3><%= @event.date.strftime('%A, %b %d') %></h3>
   <h4><%= @event.tstart.strftime('%I:%M %p') %>
     -
     <%= @event.tend.strftime('%I:%M %p') %></h4>
+  <br>
+
+  <b>Cost:
+  </b>
+    <%= @event.actual_price %>
+   &nbsp;
+   &nbsp;
+   &nbsp;
+  <b>Ages:
+  </b>
+  <%= @event.age %>
+  <br>
   <br>
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
@@ -34,6 +47,9 @@ $("document").ready(function(){
   <% else %>  
     <%= link_to "Add to calendar", favorite_event_path(@event, type: "add"), method: :put, class: 'btn btn-primary' %>
   <% end %>
+    <% if current_user.id == @event.user_id %>
+    <%= link_to "Edit event", edit_event_path(@event), class: 'btn btn-success' %>
+   <% end %>
   <div id="map"></div>
   <br/>
   <div style="positon:relative; left: -20px; float:right;" class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>  
