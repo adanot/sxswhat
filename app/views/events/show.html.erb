@@ -39,6 +39,11 @@ $("document").ready(function(){
   </b>
   <%= @event.age %>
   <br>
+  <b>
+  <% if @event.link.length > 9 %>
+  <%=link_to 'Tickets/RSVP Here', @event.link %>
+  <% end %>
+  </b>
   <br>
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
@@ -49,7 +54,7 @@ $("document").ready(function(){
   <% else %>  
     <%= link_to "Add to calendar", favorite_event_path(@event, type: "add"), method: :put, class: 'btn btn-primary' %>
   <% end %>
-    <% if current_user.id == @event.user_id %>
+    <% if current_user == @event.user_id %>
     <%= link_to "Edit event", edit_event_path(@event), class: 'btn btn-success' %>
    <% end %>
 <br>
@@ -59,9 +64,6 @@ $("document").ready(function(){
 </div>
 <hr>
 <p class="single_event">
-  <% if @event.link.length > 9 %>
-  <%=link_to 'Tickets/RSVP', @event.link %>
-  <% end %>
   <br>
 <div style="position: relative; float:right;"><b>Created by: </b><%= link_to User.find_by_id(@event.user_id).name, User.find_by_id(@event.user_id) %><div>
 </p>
