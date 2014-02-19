@@ -59,7 +59,7 @@ $("document").ready(function(){
 </div>
 <hr>
 <p class="single_event">
-  <% if @event.link.length < 9 %>
+  <% if @event.link.length > 9 %>
   <%=link_to 'Tickets/RSVP', @event.link %>
   <% end %>
   <br>
