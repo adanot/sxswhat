@@ -19,3 +19,5 @@
 /server.key
 /server.cert
 /bundle.pem
+/public.pem
+
