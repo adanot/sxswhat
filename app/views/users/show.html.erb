@@ -39,7 +39,9 @@ $(document).ready(function(){
       <th>Time</th>
       <% if current_user.id == @user.id %>
       <th>Action</th>
+      <th> </th>
       <% end %>
+	
     </tr>
         <% Event.find(:all, :conditions=>['user_id=?',@user.id]).each do |event| %>
           <tr>
