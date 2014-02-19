@@ -72,10 +72,12 @@
     <div class="span4 offset1">	
       </br>
       Start Time
-      <%= f.text_field :tstart, class: 'start_timepicker span2' %>
+      <%= f.text_field :tstart, class: 'start_timepicker span2' unless @event.tstart %>
+      <%= f.text_field :tstart, class: 'start_timepicker span2', value: @event.tstart.strftime("%I:%M %p") if @event.tstart %>
       </br>
       End Time&nbsp; 
-      <%= f.text_field :tend, class: 'end_timepicker span2' %>
+      <%= f.text_field :tend, class: 'end_timepicker span2' unless @event.tend %>
+      <%= f.text_field :tend, class: 'end_timepicker span2', value: @event.tend.strftime("%I:%M %p") if @event.tend %>
     </div>
   </div>
 
