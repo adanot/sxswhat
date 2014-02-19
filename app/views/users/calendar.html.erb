@@ -15,7 +15,7 @@
 			editable: false,
 			events: [
                                 <% counter = 0 %>
-                                <% @events.each do |event| %>
+                                <% Event.find(:all, :conditions=>['user_id=?', @user.id]).each do |event| %>
                                   <% counter += 1 %>
 				  {
                                     title: '<%= event.name %>',
