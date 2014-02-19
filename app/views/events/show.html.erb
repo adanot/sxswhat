@@ -42,6 +42,8 @@ $("document").ready(function(){
   <br>
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
+  <div id="map"></div>
+
   <% if current_user && current_user.user_calendars.collect(&:event).include?(@event) %>
     <%= link_to "Remove from calendar", remove_event_path(@event), method: :put, class: 'btn btn-primary btn-danger' %>
   <% else %>  
@@ -50,20 +52,13 @@ $("document").ready(function(){
     <% if current_user.id == @event.user_id %>
     <%= link_to "Edit event", edit_event_path(@event), class: 'btn btn-success' %>
    <% end %>
-  <div id="map"></div>
-  <br/>
+<br>
+<br>
+<br>
   <div style="positon:relative; left: -20px; float:right;" class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>  
 </div>
 <hr>
 <p class="single_event">
-  <b>Cost:
-  </b>
-    <%= @event.actual_price %>
-  <br>
-  <b>Ages:
-  </b>
-  <%= @event.age %>
-  <br>
   <% if @event.link.length != 0 %>
   <%=link_to 'Tickets/RSVP', @event.link %>
   <% end %>
