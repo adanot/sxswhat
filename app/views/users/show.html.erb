@@ -1,3 +1,16 @@
+<script>
+$(document).ready(function(){  
+  $('.event_delete').click(function(){
+    if( new Date( $(this).attr('last_date')) > new Date( <%= Date.today.strftime('%Y-%m-%d') %> ) ){
+      if( confirm('Are you sure to delete the event before completion date') ){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  });
+});
+</script>
 <%= provide(:title, @user.name) %>
 <div class="row">
   <aside class="span4">
@@ -34,6 +47,7 @@
             <td><%= event.tstart.strftime('%I:%M %p') %></td>
 	    <% if current_user.id == @user.id %>
             <td><%= link_to "Edit", edit_event_path(event), class: 'btn btn-mini btn-success' %> </td>
+            <td><%= link_to "Delete", event,class: 'btn btn-mini btn-danger event_delete', method: :delete, last_date: event.date.strftime('%Y-%m-%d') %> </td>
 	    <% end %>
 	    <% end %>
           </tr>

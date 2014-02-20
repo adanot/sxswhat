@@ -39,4 +39,12 @@ module ApplicationHelper
     calendar_date = scheduled_date < Date.today ? Date.today : scheduled_date
     calendar_date.strftime('%m/%d/%Y') 
   end
+
+  def confirm_deletion(event)
+    if event.date > Date.today
+      "return confirm_delete();"
+    else
+      "return true;"
+    end
+  end
 end

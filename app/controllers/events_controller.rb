@@ -22,9 +22,9 @@ class EventsController < ApplicationController
   end
 
   def destroy
-	Event.find(params[:id]).destroy
-	flash[:success] = "Event deleted"
-	redirect_to root_url
+    Event.find(params[:id]).destroy
+    flash[:success] = "Event deleted"
+    redirect_to current_user
   end
 
   def index
@@ -34,6 +34,13 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.new(event_params)
     if @event.save
+        links_array = URI.extract(@event.content)
+        links_array.each do |link|
+          Link.create(
+            event_id: @event.id,
+            url: link
+          )
+        end
 	flash[:success] = "Event created!"
 	redirect_to @event
     else
@@ -63,10 +70,6 @@ class EventsController < ApplicationController
   
   def index
    @events = Event.all
-  end
-
-  def destroy
-    
   end
 
   def add

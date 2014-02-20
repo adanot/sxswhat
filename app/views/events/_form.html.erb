@@ -65,7 +65,8 @@
   <div class="row">
     <div class="span3">	
       <%= f.label :date %>
-      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker', value: calendar_starting_date %>
+      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker', value: calendar_starting_date  if @event.date.nil? %>
+      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker', value: @event.date.strftime("%m/%d/%Y")  unless @event.date.nil? %>
     </div>
 
     <div class="span4 offset1">	
