@@ -2,7 +2,8 @@ SampleApp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :events do
-	put :favorite, on: :member
+    put :favorite, on: :member
+    put :remove, on: :member
   end
   root 'static_pages#home'
   match '/signup', to: 'users#new', via: 'get'

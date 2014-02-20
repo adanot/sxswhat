@@ -30,9 +30,9 @@ $("document").ready(function(){
   <b><%=@event.location %></b>
   <p><%= @event.address %></p>
   <% if current_user && current_user.user_calendars.collect(&:event).include?(@event) %>
-    <%= link_to "Added to calendar", '#' , class: 'btn btn-primary' %>
+    <%= link_to "Remove from calendar", remove_event_path(@event), method: :put, class: 'btn btn-primary' %>
   <% else %>  
-    <%= link_to "Add to calendar", favorite_event_path(@event, type: "add"), method: :put , class: 'btn btn-primary' %>
+    <%= link_to "Add to calendar", favorite_event_path(@event, type: "add"), method: :put, class: 'btn btn-primary' %>
   <% end %>
   <div id="map"></div>
   <br/>
