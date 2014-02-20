@@ -8,7 +8,8 @@ class Event < ActiveRecord::Base
   validates :user_id, presence: true
   validates :address, presence: true
   validates :content, presence: true
-   validate :creation_conditions  
+  validate :creation_conditions 
+ 
 
   before_save :update_link
 
