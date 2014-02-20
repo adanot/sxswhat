@@ -59,6 +59,14 @@ class EventsController < ApplicationController
     redirect_to Event.find params[:id]   
   end
 
+  def remove 
+    UserCalendar.find_by_event_id_and_user_id(
+      params[:id], current_user.id ).destroy if UserCalendar.find_by_event_id_and_user_id(params[:id], current_user.id)
+
+    flash[:success] = 'Event deleted from calendar'
+    redirect_to Event.find params[:id]   
+  end
+
   def show
    @event = Event.find(params[:id])
    @events = Event.where( id: @event.id )
