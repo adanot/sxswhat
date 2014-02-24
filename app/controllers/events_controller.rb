@@ -7,6 +7,9 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find params[:id]
+      if @event.user_id != current_user.id
+	redirect_to root_url
+      end
   end
 
   def update
