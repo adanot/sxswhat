@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   end
  
   def calendar
+
+    @user = User.find(params[:id])
     @events = (current_user.user_calendars.collect(&:event) + current_user.events ).uniq
   end
 
