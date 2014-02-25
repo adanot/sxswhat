@@ -5,11 +5,16 @@ class UsersController < ApplicationController
   def show
 	@user = User.find(params[:id])
   end
- 
+
   def calendar
+<<<<<<< HEAD
 
     @user = User.find(params[:id])
     @events = (current_user.user_calendars.collect(&:event) + current_user.events ).uniq
+=======
+    user_events = User.find(params[:id]) || current_user
+    @events = (user_events.user_calendars.collect(&:event) + user_events.events ).uniq
+>>>>>>> 5d59c13f762f3986908fca1d17065aa78023c31d
   end
 
   def new
@@ -28,11 +33,11 @@ class UsersController < ApplicationController
 	@user = User.find(params[:id])
 	if @user.update_attributes(user_params)
 	  flash[:success] = "Profile updated"
-	  redirect_to @user	 
+	  redirect_to @user
 	else
 	  render 'edit'
 	end
-  end	
+  end
 
   def create
 	@user = User.new(user_params)
@@ -43,7 +48,7 @@ class UsersController < ApplicationController
 	else
 	  render 'new'
 	end
-  end	
+  end
 
   def destroy
 	User.find(params[:id]).destroy
