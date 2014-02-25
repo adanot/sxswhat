@@ -1,33 +1,19 @@
 <% provide(:title, 'Events') %>
-<ul class="users">
-  <% @events.each do |event| %>
-    <li>
-      <%= link_to event.name, event %>
+<h1>Schedule</h1>
       <table class='table'>
     <tr>
       <th>Event Name</th>
       <th>Location</th>
       <th>Date</th>
       <th>Time</th>
-      <% if current_user.id == @user.id %>
-      <th>Action</th>
-      <th> </th>
-      <% end %>
-  
     </tr>
+  <% @events.each do |event| %>
           <tr>
             <td><%= link_to event.name, event %></td>
             <td><%= event.location %></td>
-      <td><%= event.date.strftime("%m-%d-%Y") %></td>
+     	    <td><%= event.date.strftime("%m-%d-%Y") %></td>
             <td><%= event.tstart.strftime('%l:%M %p') %></td>
-
           </tr>
-      </table>
-        <% if current_user && current_user.user_calendars.collect(&:event).include?(event) %>
-          <%= link_to "Remove from calendar", remove_event_path(event), method: :put, class: 'btn btn-primary btn-danger event_sidebar' %>
-        <% else %>
-          <%= link_to "Add to calendar", favorite_event_path(event, type: "add"), method: :put, class: 'btn btn-primary event_sidebar' %>
-        <% end %>
-    </li>
   <% end %>
-</ul>
+
+      </table>
