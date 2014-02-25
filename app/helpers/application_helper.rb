@@ -35,7 +35,7 @@ module ApplicationHelper
   end
 
   def calendar_starting_date
-    scheduled_date = Date.parse('03/07/2014')
+    scheduled_date = Date.parse('03/05/2014')
     calendar_date = scheduled_date < Date.today ? Date.today : scheduled_date
     calendar_date.strftime('%m/%d/%Y') 
   end

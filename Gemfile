@@ -7,6 +7,7 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate', '0.0.9'
+gem 'friendly_id', '~> 5.0.0'
 group :development, :test do
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219191258) do
+ActiveRecord::Schema.define(version: 20140225052351) do
 
   create_table "events", force: true do |t|
     t.text     "content",    limit: 255
@@ -34,7 +34,10 @@ ActiveRecord::Schema.define(version: 20140219191258) do
     t.boolean  "rsvp"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "slug"
   end
+
+  add_index "events", ["slug"], name: "index_events_on_slug"
 
   create_table "links", force: true do |t|
     t.text     "url"

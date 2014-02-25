@@ -25,7 +25,7 @@
 $("document").ready(function(){
   var nowTemp = new Date();
   
-  var startDate = new Date(2014, 2 , 07, 0, 0, 0, 0);
+  var startDate = new Date(2014, 2 , 05, 0, 0, 0, 0);
   var endDate = new Date(2014, 2 , 16, 0, 0, 0, 0);
   
 
