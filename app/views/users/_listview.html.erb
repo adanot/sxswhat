@@ -1,0 +1,13 @@
+<% provide(:title, 'Events') %>
+<ul class="users">
+  <% @events.each do |event| %>
+    <li>
+      <%= link_to event.name, event %>
+        <% if current_user && current_user.user_calendars.collect(&:event).include?(event) %>
+          <%= link_to "Remove from calendar", remove_event_path(event), method: :put, class: 'btn btn-primary btn-danger event_sidebar' %>
+        <% else %>
+          <%= link_to "Add to calendar", favorite_event_path(event, type: "add"), method: :put, class: 'btn btn-primary event_sidebar' %>
+        <% end %>
+    </li>
+  <% end %>
+</ul>
