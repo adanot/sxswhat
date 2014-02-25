@@ -7,14 +7,9 @@ class UsersController < ApplicationController
   end
 
   def calendar
-<<<<<<< HEAD
 
-    @user = User.find(params[:id])
-    @events = (current_user.user_calendars.collect(&:event) + current_user.events ).uniq
-=======
     user_events = User.find(params[:id]) || current_user
     @events = (user_events.user_calendars.collect(&:event) + user_events.events ).uniq
->>>>>>> 5d59c13f762f3986908fca1d17065aa78023c31d
   end
 
   def new
