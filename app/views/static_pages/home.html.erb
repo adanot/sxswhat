@@ -47,6 +47,7 @@
 	  <th>Price</th>
           <th>Time</th>
           <th></th>
+	  <th></th>
         </tr>
       <% event_list.each do |event| %>
           <tr class='<%= event_class(event) %>' >
@@ -65,10 +66,12 @@
                 &nbsp;&nbsp;&nbsp;
               <% end %>
 	    </td>
-            <td><%= link_to event.name, event %></td>
+	    <td><%= link_to event.name, event %></td>
             <td><%=event.location%></td>
 	    <td><%= event.actual_price %></td>
             <td><%=event.tstart.strftime('%-I:%M %p') %> - <%= event.tend.strftime('%-I:%M %p') %></td>
+
+	    <td><span class="badge"><%= events_count(event) %></span></td>
             <td>
               <%= link_to "<span class='glyphicon glyphicon-calendar'></span>".html_safe, favorite_event_path(event), method: :put %>
             </td>

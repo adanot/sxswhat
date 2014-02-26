@@ -1,9 +1,9 @@
 <li>
   <%= link_to event.name, event %>
+    <span class="badge"><%= events_count(event) %></span>
   <% if current_user.admin? %>
     |
     <%= link_to "Delete", event, class: 'btn btn-mini btn-danger', method: :delete,data: { confirm: "You sure?" } %>
     <%= link_to "Edit", edit_event_path(event), class: 'btn btn-mini btn-success' %>
   <% end %>
-   | <%= events_count(event) %>
 </li>
