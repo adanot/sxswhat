@@ -50,9 +50,9 @@ $("document").ready(function(){
   <div id="map"></div>
 
   <% if current_user && current_user.user_calendars.collect(&:event).include?(@event) %>
-    <%= link_to "Remove from calendar", remove_event_path(@event), method: :put, class: 'btn btn-primary btn-danger' %>
+    <%= link_to "Remove from schedule", remove_event_path(@event), method: :put, class: 'btn btn-primary btn-danger' %>
   <% else %>  
-    <%= link_to "Add to calendar", favorite_event_path(@event, type: "add"), method: :put, class: 'btn btn-primary' %>
+    <%= link_to "Add to schedule", favorite_event_path(@event, type: "add"), method: :put, class: 'btn btn-primary' %>
   <% end %>
     <% if current_user == @event.user_id %>
     <%= link_to "Edit event", edit_event_path(@event), class: 'btn btn-success' %>
