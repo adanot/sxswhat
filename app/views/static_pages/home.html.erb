@@ -44,7 +44,6 @@
 	  <th></th>
           <th>Event Name</th>
           <th>Location</th>
-	  <th>Ages</th>
 	  <th>Price</th>
           <th>Time</th>
           <th></th>
@@ -68,7 +67,6 @@
 	    </td>
             <td><%= link_to event.name, event %></td>
             <td><%=event.location%></td>
-	    <td><%=event.ages %></td>
 	    <td><%= event.actual_price %></td>
             <td><%=event.tstart.strftime('%-I:%M %p') %> - <%= event.tend.strftime('%-I:%M %p') %></td>
             <td>
