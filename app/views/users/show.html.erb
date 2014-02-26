@@ -11,13 +11,13 @@ $(document).ready(function(){
   });
 });
 </script>
-<%= provide(:title, @user.name) %>
+<%= provide(:title, @user.first_name) %>
 <div class="row">
   <aside class="span4">
     <section>
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= @user.first_name %>
       </h1>
     </section>
   </aside>
@@ -27,7 +27,7 @@ $(document).ready(function(){
 <% if current_user.id == @user.id %>
     Events created by you
 <% else %>
-    Events created by <%=@user.name %>
+    Events created by <%=@user.first_name %>
 <% end %>
   </h3>
 

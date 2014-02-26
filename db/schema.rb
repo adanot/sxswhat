@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225052351) do
+ActiveRecord::Schema.define(version: 20140226033817) do
 
   create_table "events", force: true do |t|
     t.text     "content",    limit: 255
@@ -54,13 +54,14 @@ ActiveRecord::Schema.define(version: 20140225052351) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name"
+    t.string   "first_name"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
