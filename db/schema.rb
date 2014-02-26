@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226033817) do
+ActiveRecord::Schema.define(version: 20140226202320) do
 
   create_table "events", force: true do |t|
     t.text     "content",    limit: 255
@@ -62,6 +62,9 @@ ActiveRecord::Schema.define(version: 20140226033817) do
     t.string   "remember_token"
     t.boolean  "admin"
     t.string   "last_name"
+    t.boolean  "privacy"
+    t.boolean  "emailopt"
+    t.string   "displayname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
