@@ -50,6 +50,6 @@ module ApplicationHelper
 
   def events_count(event_id)
 
-	@count = UserCalendar.where('event_id = ?', event_id).count + 1
+	@count = UserCalendar.where('event_id = ?', event_id).count
   end
 end
