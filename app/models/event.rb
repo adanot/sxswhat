@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :name, use: :slugged
+ # extend FriendlyId
+ # friendly_id :name, use: :slugged
   geocoded_by :address
   after_validation :geocode
 
@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
     if self.free
       "Free"
     elsif self.rsvp
-	"Free w/ RSVP"
+	"RSVP"
     else
       self.price ? "$ " + self.price.to_s : "Free"
     end

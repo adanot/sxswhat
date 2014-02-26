@@ -41,6 +41,7 @@
         </tr>
         <tr>
 	  <th></th>
+	  <th></th>
           <th>Event Name</th>
           <th>Location</th>
 	  <th>Price</th>
@@ -50,7 +51,12 @@
       <% event_list.each do |event| %>
           <tr class='<%= event_class(event) %>' >
 	    <td>
-
+	
+		<% if event.actual_price[0] == "$"%>
+		<span class ="glyphicon glyphicon-usd"></span>
+		<% else %>
+		 &nbsp;&nbsp;&nbsp;
+		<% end %>
               <% if event.drinks == true %>
                 <span class="glyphicon glyphicon-glass"></span>
               <% else %>
