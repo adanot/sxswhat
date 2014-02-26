@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find params[:id]
-      if @event.user_id != current_user.id
+      unless @event.user_id != current_user.id || current_user.admin?
 	redirect_to root_url
       end
   end
