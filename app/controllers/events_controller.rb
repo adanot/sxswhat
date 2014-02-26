@@ -58,7 +58,7 @@ class EventsController < ApplicationController
       user_id: current_user.id
     ) unless UserCalendar.find_by_event_id_and_user_id(params[:id], current_user.id)
 
-    flash[:success] = 'Event added to the calendar'
+    flash[:success] = 'Event added to your schedule'
     redirect_to Event.find params[:id]   
   end
 
@@ -66,7 +66,7 @@ class EventsController < ApplicationController
     UserCalendar.find_by_event_id_and_user_id(
       params[:id], current_user.id ).destroy if UserCalendar.find_by_event_id_and_user_id(params[:id], current_user.id)
 
-    flash[:success] = 'Event deleted from calendar'
+    flash[:success] = 'Event deleted from your schedule'
     redirect_to Event.find params[:id]   
   end
 
