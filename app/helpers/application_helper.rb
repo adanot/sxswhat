@@ -47,4 +47,9 @@ module ApplicationHelper
       "return true;"
     end
   end
+
+  def events_count(event_id)
+
+	@count ||= UserCalendar.where('event_id = ?', event_id).count
+  end
 end
