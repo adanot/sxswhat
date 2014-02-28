@@ -35,7 +35,7 @@ module ApplicationHelper
   end
 
   def calendar_starting_date
-    scheduled_date = Date.parse('03/05/2014')
+    scheduled_date = Date.parse(EVENT_START_DATE)
     calendar_date = scheduled_date < Date.today ? Date.today : scheduled_date
     calendar_date.strftime('%m/%d/%Y') 
   end
@@ -49,7 +49,6 @@ module ApplicationHelper
   end
 
   def events_count(event_id)
-
-	@count = UserCalendar.where('event_id = ?', event_id).count
+    @count = UserCalendar.where('event_id = ?', event_id).count
   end
 end

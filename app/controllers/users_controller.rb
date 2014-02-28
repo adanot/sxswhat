@@ -4,12 +4,36 @@ class UsersController < ApplicationController
   before_action :admin_user,	 only: :destroy
   def show
 	@user = User.find(params[:id])
+
+    @events = Event.find(:all, :conditions=>['user_id=?',@user.id]) 
+    @events_collection = Hash.new
+    start_date = Date.parse(EVENT_START_DATE)
+    end_date = Date.parse(EVENT_END_DATE)
+
+    (start_date...end_date).each do |event_date|
+      @events_collection[event_date] = Array.new 
+      @events.each do |event|
+        @events_collection[event_date].push event if event.date == event_date
+      end
+    end
   end
 
   def calendar
 
     user_events = User.find(params[:id]) || current_user
     @events = (user_events.user_calendars.collect(&:event) + user_events.events ).uniq
+
+
+    @events_collection = Hash.new
+    start_date = Date.parse(EVENT_START_DATE)
+    end_date = Date.parse(EVENT_END_DATE)
+
+    (start_date...end_date).each do |event_date|
+      @events_collection[event_date] = Array.new 
+      @events.each do |event|
+        @events_collection[event_date].push event if event.date == event_date
+      end
+    end
   end
 
   def new

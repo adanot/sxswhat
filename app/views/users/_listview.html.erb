@@ -1,19 +1,51 @@
 <% provide(:title, 'Events') %>
 <h1>Schedule</h1>
-      <table class='table'>
-    <tr>
-      <th>Event Name</th>
-      <th>Location</th>
-      <th>Date</th>
-      <th>Time</th>
-    </tr>
-  <% @events.each do |event| %>
-          <tr>
-            <td><%= link_to event.name, event %></td>
-            <td><%= event.location %></td>
-     	    <td><%= event.date.strftime("%m-%d-%Y") %></td>
-            <td><%= event.tstart.strftime('%l:%M %p') %></td>
-          </tr>
-  <% end %>
+<table class='table table-responsive table-striped '>
+  <% @events_collection.each do |event_date, event_list| %>
+    <% if event_list.length > 0 %>
+    <tbody class='<%= events_collection_class(event_list) + " " + event_date.to_s %>'>
+        <tr>
+          <th colspan=8><h3><%= event_date.strftime('%A, %d %B') %> </h3> </th>
+        </tr>
+        <tr>
+	  <td></td>
+	  <td></td>
+          <td><b>Event Name</b></td>
+          <td><b>Location</b></td>
+	  <td><b>Price</b></td>
+          <td><b>Time</b></td>
+          <td></td>
+	  <td></td>
+        </tr>
+      <% event_list.each do |event| %>
+          <tr class='<%= event_class(event) %>' >
+	    <td>
+	
+		<% if event.actual_price[0] == "$"%>
+		<span class ="glyphicon glyphicon-usd"></span>
+		<% else %>
+		 &nbsp;&nbsp;&nbsp;
+		<% end %>
+	    </td>
+	    <td>
+              <% if event.drinks == true %>
+                <span class="glyphicon glyphicon-glass"></span>
+              <% else %>
+                &nbsp;&nbsp;&nbsp;
+              <% end %>
+	    </td>
+	    <td><%= link_to event.name, event %></td>
+            <td><%=event.location%></td>
+	    <td><%= event.actual_price %></td>
+            <td><%=event.tstart.strftime('%-I:%M %p') %> - <%= event.tend.strftime('%-I:%M %p') %></td>
 
-      </table>
+	    <td><span class="badge"><%= events_count(event) %></span></td>
+            <td>
+              <%= link_to "<span class='glyphicon glyphicon-calendar'></span>".html_safe, favorite_event_path(event), method: :put %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+    <% end %>
+  <% end %>
+</table>

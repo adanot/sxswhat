@@ -205,7 +205,7 @@ input, textarea, .uneditable-input {
 	margin-bottom: 15px;
 	@include box_sizing;
 }
-input[type=checkbox]{
+input[type=checkbox], input[type=submit]{
   width: auto !important;
 }
 input {

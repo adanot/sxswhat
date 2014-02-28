@@ -40,6 +40,7 @@
         <tr>
 	  <td></td>
 	  <td></td>
+	  <td></td>
           <td><b>Event Name</b></td>
           <td><b>Location</b></td>
 	  <td><b>Price</b></td>
@@ -49,6 +50,11 @@
         </tr>
       <% event_list.each do |event| %>
           <tr class='<%= event_class(event) %>' >
+            <td>
+              <% if event.is_top_10? %>
+                Top 10
+              <% end %>
+            </td>
 	    <td>
 	
 		<% if event.actual_price[0] == "$"%>
