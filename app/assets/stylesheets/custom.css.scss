@@ -1,4 +1,9 @@
+.col-md-6 img{
+display:block;
+width:100%;
 
+
+}
 .hero-unit {
 
 margin-top: 50px !important;
@@ -7,7 +12,7 @@ margin-top: 50px !important;
 }
 
 .navbar-inverse{
-background-color:#000000;
+background-color:#000;
 margin: -50px
 }
 
@@ -16,14 +21,25 @@ margin: -50px
 margin-top: 50px;
 }
 
+.table-striped{
+	background-color:#1d1d1d;
+}
+
 .table td {
 
 padding: 2px !important;
 
 }
+th{
+	background-color:black;
+}
+tr{
+	background-color:black;
+}
 
 tr.filters{
-	background-color: rgba(25,36,44,0.8);
+/*	background-color: rgba(25,36,44,0.8);*/
+	background-color: black;
 	color: #FFF;
 	text-align: center;
 
@@ -82,7 +98,9 @@ html {
 
 body { 
 	padding-top: 70px;
-	background-image:url('/images/bg/debut_light.png');
+/*	background-image:url('/images/bg/debut_light.png');*/
+	background-color:#101010;
+	color: white;
 }
 
 section {
