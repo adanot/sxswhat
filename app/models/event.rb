@@ -36,5 +36,12 @@ class Event < ActiveRecord::Base
       self.price ? "$ " + self.price.to_s : "Free"
     end
   end 
+  
+  def no_of_participants
+    user_calendars.count 
+  end
 
+  def is_top_10?
+    Event.all.sort{|event| event.no_of_participants}.reverse[0..9].include?(self)
+  end
 end

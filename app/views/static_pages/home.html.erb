@@ -1,5 +1,4 @@
-<div>
-<div class="center hero-unit">
+<div class="center hero-unit col-md-6 centered" style='float: none;margin: 0 auto;'>
   <%= image_tag("SXSWHAT.png", size: '483x162') %>
   <h2>
     A simple, user submitted event schedule
@@ -13,16 +12,16 @@
     <%= link_to "Post new event", new_event_path, class: "btn btn-large btn-primary"%>
   <% end %>
 </div>
-</div>
-<ul style="list-style:none">
-  <table>
-    <tr>
-      <td style='vertical-align: top;'><b>Filters</b></td>
-       <td  style='vertical-align: top;'><input id='free_price' type=checkbox /> Free</td>
-      <td style='vertical-align: top;'><input id='rsvp' type=checkbox /> Free w/ RSVP</td>
-      <td style='vertical-align: top;'><input id='paid' type=checkbox /> Paid</td>
-      <td style='vertical-align: top;'><input id='free_drink' type=checkbox /> Free Drinks</td>
-      <td>
+<br/>
+<br/>
+<br/>
+  <div class='col-md-12'>
+      <div class='col-md-2'><b>Filters</b></div>
+      <div class='col-md-2' style='text-align:left;'><input id='free_price' class='pull-left' style='width:auto !important;' type=checkbox /> Free</div>
+      <div class='col-md-2' style='text-align:left;'><input id='rsvp' type=checkbox  class='pull-left' style='width:auto !important;'/> Free w/ RSVP</div>
+      <div class='col-md-2' style='text-align:left;'><input id='paid' type=checkbox  class='pull-left' style='width:auto !important;' /> Paid</div>
+      <div class='col-md-2' style='text-align:left;'><input id='free_drink' type=checkbox  class='pull-left' style='width:auto !important;' /> Free Drinks</div>
+      <div class='col-md-2' style='text-align:left;'>
         Date
         <select id='event_date' style='width: 150px;vertical-align: baseline;'>
            <option value='all_date' > All </option>
@@ -30,27 +29,32 @@
              <option value='<%= event_date.to_s %>' ><%= event_date.to_s(:long) %> </option>
            <% end %>
         </select> 
-      </td>
-    </tr>
-  </table>
-  <table class='table'>
+      </div>
+  </div>
+  <table class='table table-responsive table-striped '>
   <% @events_collection.each do |event_date, event_list| %>
     <tbody class='<%= events_collection_class(event_list) + " " + event_date.to_s %>'>
         <tr>
-          <th colspan=4><h3><%= event_date.strftime('%A, %d %B') %> </h3> </th>
+          <th colspan=8><h3><%= event_date.strftime('%A, %d %B') %> </h3> </th>
         </tr>
         <tr>
-	  <th></th>
-	  <th></th>
-          <th>Event Name</th>
-          <th>Location</th>
-	  <th>Price</th>
-          <th>Time</th>
-          <th></th>
-	  <th></th>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+          <td><b>Event Name</b></td>
+          <td><b>Location</b></td>
+	  <td><b>Price</b></td>
+          <td><b>Time</b></td>
+          <td></td>
+	  <td></td>
         </tr>
       <% event_list.each do |event| %>
           <tr class='<%= event_class(event) %>' >
+            <td>
+              <% if event.is_top_10? %>
+                Top 10
+              <% end %>
+            </td>
 	    <td>
 	
 		<% if event.actual_price[0] == "$"%>
@@ -80,4 +84,4 @@
     </tbody>
   <% end %>
   </table>
-</ul>
+</div>

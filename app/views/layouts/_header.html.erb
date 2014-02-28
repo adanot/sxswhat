@@ -3,13 +3,14 @@
     <div class="container">
       <%= link_to image_tag("SXSWHAT_white.png", id: "logo", size: '124x42'), root_path %>
       <%#= link_to "SXSWHAT?", root_path, id: "logo"%>
-      <nav>
-        <ul class="nav pull-right">
+      <button class='navbar-toggle' data-toggle='collapse' data-target='.navHeaderCollapse'></button> 
+        <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Home", root_path %></li>
           <% if signed_in? %>
             <li><%= link_to "Post Event", new_event_path %></li>
 	    <li><%= link_to "My Schedule", calendar_path(current_user) %></li>
-            <li id="fat-menu" class="dropdown">
+            <li id="fat-menu" class="dropdown ">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Account
                 <b class="caret"></b>
@@ -38,7 +39,7 @@
               <li><%= link_to "Sign in", signin_path %></li>
             <% end %>
           </ul>
-        </nav>
+          </div>
       </div>
     </div>
   </header>

@@ -35,7 +35,7 @@
 <%= form_for(@event) do |f| %>
   <%= render 'shared/event_error_messages' %>
   <div class="row">
-    <div class="span3">	
+    <div class="col-md-6">	
       <%= f.label :name %>
       <%= f.text_field :name %>
 
@@ -47,13 +47,13 @@
     </div>
 
     <div class= "row">
-    <div class="span6 offset1">
+    <div class="col-md-6 offset1">
       Description
       <%= f.text_area :content, size: "20x10" %>
     </div>
   </div>
   <div class="row">
-    <div class="span6">
+    <div class="col-md-6">
       Tickets/RSVP(link)
       <%= f.text_field :link, placeholder: 'http://www.examplesite.com/tickets' %>
     </div>
@@ -63,21 +63,25 @@
     <hr>
   </div>
   <div class="row">
-    <div class="span3">	
+    <div class="col-md-6">	
       <%= f.label :date %>
-      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker', value: calendar_starting_date  if @event.date.nil? %>
-      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker', value: @event.date.strftime("%m/%d/%Y")  unless @event.date.nil? %>
+      <br/>
+      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker col-sm-4', value: calendar_starting_date  if @event.date.nil? %>
+      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker col-sm-4', value: @event.date.strftime("%m/%d/%Y")  unless @event.date.nil? %>
     </div>
 
-    <div class="span4 offset1">	
+    <div class="col-md-4 offset1">	
       </br>
       Start Time
-      <%= f.text_field :tstart, class: 'start_timepicker span2' unless @event.tstart %>
-      <%= f.text_field :tstart, class: 'start_timepicker span2', value: @event.tstart.strftime("%I:%M %p") if @event.tstart %>
+      </br>
+      <%= f.text_field :tstart, class: 'start_timepicker col-sm-4 ' unless @event.tstart %>
+      <%= f.text_field :tstart, class: 'start_timepicker col-sm-4 ', value: @event.tstart.strftime("%I:%M %p") if @event.tstart %>
+      </br>
       </br>
       End Time&nbsp; 
-      <%= f.text_field :tend, class: 'end_timepicker span2' unless @event.tend %>
-      <%= f.text_field :tend, class: 'end_timepicker span2', value: @event.tend.strftime("%I:%M %p") if @event.tend %>
+      </br>
+      <%= f.text_field :tend, class: 'end_timepicker col-sm-4' unless @event.tend %>
+      <%= f.text_field :tend, class: 'end_timepicker col-sm-4', value: @event.tend.strftime("%I:%M %p") if @event.tend %>
     </div>
   </div>
 
@@ -110,7 +114,7 @@ function userTyped(cb1, cb2, e){
 
 
   <div class="row">
-    <div class="span3">
+    <div class="col-md-6">
       </br>
       Free show&nbsp;
       <%= f.check_box :free, :default => false %>
@@ -122,24 +126,24 @@ function userTyped(cb1, cb2, e){
       <br>
       <%= f.label :price %>	
       <div class="input-prepend"> 
-        <span class="add-on" style="height:100%"> $</span>
-	<%= f.text_field :price, :placeholder => "15", :default => 0 %>
+        <span class="add-on pull-left" style="height:100%"> $</span>
+	<%= f.text_field :price, :placeholder => "15", :default => 0, class: 'col-sm-2' %>
       </div>
     </div>
-    <div class="span3 offset1">
+    <div class="col-md-6 offset1">
       &nbsp;
       <%= f.select :age, options_for_select([['All Ages', 'All Ages'] , ['18+', '18+'] ,['21+', '21+']]) %>
     <br>
     </div>
-    <div class="span3 offset1">
+    <div class="col-md-6 offset1">
       <br>
       Free drinks? &nbsp;
       <%= f.check_box :drinks, :default => false %>
     </div>
   </div>
   <div class="row">
-    <div class="span6">
-      <% f.text_field :price, id: 'price', type: 'text',
+    <div class="col-md-6">
+      <% f.text_field :price, id: 'price', type: 'text', class: 'col-sm-2',
 				data: { 'slider-id' => 'price',
 					'slider-min' => '0',
 					'slider-max' => '50',
@@ -149,7 +153,7 @@ function userTyped(cb1, cb2, e){
   </div>
   <div class= "row">
     <br>
-    <div class="span6 offset5">
+    <div class="col-md-6 offset5">
       <%= f.submit "Create event", class: "btn btn-large btn-primary" if params[:action] == 'new' || params[:action] == 'create' %>
       <%= f.submit "Update event", class: "btn btn-large btn-primary" if params[:action] == 'edit' || params[:action] == 'update' %>
     </div>

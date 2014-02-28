@@ -31,7 +31,7 @@ $(document).ready(function(){
 <% end %>
   </h3>
 
-  <table class='table'>
+  <!--table class='table'>
     <tr>
       <th>Event Name</th>
       <th>Location</th>
@@ -55,5 +55,60 @@ $(document).ready(function(){
 	    <% end %>
 	    <% end %>
           </tr>
-      </table>
-    </div>
+      </table-->
+
+
+<table class='table table-responsive table-striped '>
+  <% @events_collection.each do |event_date, event_list| %>
+    <% if event_list.length > 0 %>
+    <tbody class='<%= events_collection_class(event_list) + " " + event_date.to_s %>'>
+        <tr>
+          <th colspan=9><h3><%= event_date.strftime('%A, %d %B') %> </h3> </th>
+        </tr>
+        <tr>
+	  <td></td>
+	  <td></td>
+          <td><b>Event Name</b></td>
+          <td><b>Location</b></td>
+	  <td><b>Price</b></td>
+          <td><b>Time</b></td>
+          <td></td>
+          <% if current_user.id == @user.id %>
+            <th>Action</th>
+            <th> </th>
+          <% end %>
+        </tr>
+      <% event_list.each do |event| %>
+          <tr class='<%= event_class(event) %>' >
+	    <td>
+	
+		<% if event.actual_price[0] == "$"%>
+		<span class ="glyphicon glyphicon-usd"></span>
+		<% else %>
+		 &nbsp;&nbsp;&nbsp;
+		<% end %>
+	    </td>
+	    <td>
+              <% if event.drinks == true %>
+                <span class="glyphicon glyphicon-glass"></span>
+              <% else %>
+                &nbsp;&nbsp;&nbsp;
+              <% end %>
+	    </td>
+	    <td><%= link_to event.name, event %></td>
+            <td><%=event.location%></td>
+	    <td><%= event.actual_price %></td>
+            <td><%=event.tstart.strftime('%-I:%M %p') %> - <%= event.tend.strftime('%-I:%M %p') %></td>
+
+	    <td><span class="badge"><%= events_count(event) %></span></td>
+	    <% if current_user.id == @user.id %>
+            <td><%= link_to "Edit", edit_event_path(event), class: 'btn btn-mini btn-success' %> </td>
+            <td><%= link_to "Delete", event,class: 'btn btn-mini btn-danger event_delete', method: :delete, last_date: event.date.strftime('%Y-%m-%d') %> </td>
+	    <% end %>
+          </tr>
+      <% end %>
+    </tbody>
+    <% end %>
+  <% end %>
+</table>
+</div>
