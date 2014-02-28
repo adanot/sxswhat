@@ -70,7 +70,7 @@
       <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker col-sm-4', value: @event.date.strftime("%m/%d/%Y")  unless @event.date.nil? %>
     </div>
 
-    <div class="col-md-4 offset1">	
+    <div class="col-md-4">	
       </br>
       Start Time
       </br>
@@ -125,9 +125,9 @@ function userTyped(cb1, cb2, e){
       <br>
       <br>
       <%= f.label :price %>	
-      <div class="input-prepend"> 
-        <span class="add-on pull-left" style="height:100%"> $</span>
-	<%= f.text_field :price, :placeholder => "15", :default => 0, class: 'col-sm-2' %>
+      <div class="input-group"> 
+        <span class="input-group-addon" style="height:100%"> $</span>
+	<%= f.text_field :price, :placeholder => "15", :default => 0, class: 'col-sm-3' %>
       </div>
     </div>
     <div class="col-md-6 offset1">
@@ -140,18 +140,6 @@ function userTyped(cb1, cb2, e){
       Free drinks? &nbsp;
       <%= f.check_box :drinks, :default => false %>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-<div class="input-group">
-     <span class="input-group-addon">$</span> <% f.text_field :price, id: 'price', type: 'text', class: 'col-sm-2',
-				data: { 'slider-id' => 'price',
-					'slider-min' => '0',
-					'slider-max' => '50',
-					'slider-step' => '1',
-					'slider-value' => '15' } %>
-	</div>   
- </div>
   </div>
   <div class= "row">
     <br>

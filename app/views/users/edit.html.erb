@@ -1,19 +1,19 @@
 <%= provide(:title, 'Edit User') %>
 <h1>Update your profile</h1>
 <div class="row">
-  <div class="span6 offset3">
+  <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 <div class="row">
-<div class="span3">
+<div class="col-md-6">
       <%= f.text_field :first_name, :placeholder => "First Name" %>
 </div>
-<div class="span3" style="float:right; overflow:hidden;">
+<div class="col-md-6" style="float:right; overflow:hidden;">
       <%= f.text_field :last_name, :placeholder => "Last Name" %>
 </div>
 </div>
 <div class="row">
-<div class="span6">
+<div class="col-md-12">
       <%= f.text_field :email, :palceholder => "Email Address" %>
 </div>
 </div>
@@ -21,6 +21,7 @@
       <%= f.password_field :password_confirmation, :placeholder => "Password Confirm" %>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
+<br>
     <%= gravatar_for @user %>
     <a href="http://gravatar.com/emails">change</a>
   </div>

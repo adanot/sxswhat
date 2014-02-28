@@ -24,7 +24,8 @@ $("document").ready(function(){
 <h1><%= @event.name %></h1>
 <div class="row">
   <div class="col-md-6"><%= simple_format(url_link(@event.content)) %></div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-md-offset-1">
+<center>
     <h3><%= @event.date.strftime('%A, %b %d') %></h3>
     <h4><%= @event.tstart.strftime('%I:%M %p') %> - <%= @event.tend.strftime('%I:%M %p') %></h4>
     
@@ -63,15 +64,20 @@ $("document").ready(function(){
     <br>
     <br>
   
+<div class="col-xs-3 col-xs-offset-8"> 
     <div style="positon:relative;" class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>
+</div>
 <br/> 
-<br/> 
+<br/>
+<div class="col-xs-3 col-xs-offset-8"> 
 <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
 </div>
-
+</div>
+</center>
   <hr>
-  <p class="single_event">
+
     <br>
-    <div style="position: relative; float:right;"><b>Created by: </b><%= link_to User.find_by_id(@event.user_id).first_name, User.find_by_id(@event.user_id) %><div>
-  </p>
+<div class="col-md-6">
+    <div style="position: relative; "><b>Created by: </b><%= link_to User.find_by_id(@event.user_id).first_name, User.find_by_id(@event.user_id) %><div>
+</div>
