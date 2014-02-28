@@ -143,13 +143,15 @@ function userTyped(cb1, cb2, e){
   </div>
   <div class="row">
     <div class="col-md-6">
-      <% f.text_field :price, id: 'price', type: 'text', class: 'col-sm-2',
+<div class="input-group">
+     <span class="input-group-addon">$</span> <% f.text_field :price, id: 'price', type: 'text', class: 'col-sm-2',
 				data: { 'slider-id' => 'price',
 					'slider-min' => '0',
 					'slider-max' => '50',
 					'slider-step' => '1',
 					'slider-value' => '15' } %>
-    </div>
+	</div>   
+ </div>
   </div>
   <div class= "row">
     <br>
