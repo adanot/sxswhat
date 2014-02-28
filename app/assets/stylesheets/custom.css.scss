@@ -199,14 +199,15 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, .uneditable-input {
 	border: 1px solid #bbb;
 	width: 100%;
 	margin-bottom: 15px;
 	@include box_sizing;
-
 }
-
+input[type=checkbox]{
+  width: auto !important;
+}
 input {
 	height: auto !important;
 }
@@ -243,8 +244,6 @@ input {
 /* table */
 table {
   width: 100%;
-  text-align: center;
-
 }
 
 

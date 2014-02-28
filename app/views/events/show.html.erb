@@ -18,52 +18,56 @@ $("document").ready(function(){
   });
 });
 </script>
+
 <% provide(:title, @event.name) %>
+
 <h1><%= @event.name %></h1>
-<div class="single_event"><%= simple_format(url_link(@event.content)) %></div>
-<div class="event_sidebar">
+<div class="row">
+  <div class="col-md-6"><%= simple_format(url_link(@event.content)) %></div>
+  <div class="col-md-4">
+    <h3><%= @event.date.strftime('%A, %b %d') %></h3>
+    <h4><%= @event.tstart.strftime('%I:%M %p') %> - <%= @event.tend.strftime('%I:%M %p') %></h4>
+    
+    <br>
 
-  <h3><%= @event.date.strftime('%A, %b %d') %></h3>
-  <h4><%= @event.tstart.strftime('%I:%M %p') %>
-    -
-    <%= @event.tend.strftime('%I:%M %p') %></h4>
-  <br>
-
-  <b>Cost:
-  </b>
+    <b>Cost:</b>
     <%= @event.actual_price %>
-   &nbsp;
-   &nbsp;
-   &nbsp;
-  <b>Ages:
-  </b>
-  <%= @event.age %>
-  <br>
-  <b>
-  <% if @event.link.length > 9 %>
-  <%=link_to 'Tickets/RSVP Here', @event.link %>
-  <% end %>
-  </b>
-  <br>
-  <b><%=@event.location %></b>
-  <p><%= @event.address %></p>
-  <div id="map"></div>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+    <b>Ages:</b>
+    <%= @event.age %>
+  
+    <br>
+    <b>
+      <% if @event.link.length > 9 %>
+        <%=link_to 'Tickets/RSVP Here', @event.link %>
+      <% end %>
+    </b>
+    <br>
+    <b><%=@event.location %></b>
+    <p><%= @event.address %></p>
+    <div id="map"></div>
 
-  <% if current_user && current_user.user_calendars.collect(&:event).include?(@event) %>
-    <%= link_to "Remove from schedule", remove_event_path(@event), method: :put, class: 'btn btn-primary btn-danger' %>
-  <% else %>  
-    <%= link_to "Add to schedule", favorite_event_path(@event, type: "add"), method: :put, class: 'btn btn-primary' %>
-  <% end %>
+    <% if current_user && current_user.user_calendars.collect(&:event).include?(@event) %>
+      <%= link_to "Remove from schedule", remove_event_path(@event), method: :put, class: 'btn btn-primary btn-danger' %>
+    <% else %>  
+      <%= link_to "Add to schedule", favorite_event_path(@event, type: "add"), method: :put, class: 'btn btn-primary' %>
+    <% end %>
+    
     <% if current_user == @event.user_id %>
-    <%= link_to "Edit event", edit_event_path(@event), class: 'btn btn-success' %>
-   <% end %>
-<br>
-<br>
-<br>
-  <div style="positon:relative; left: -20px; float:right;" class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>  
+      <%= link_to "Edit event", edit_event_path(@event), class: 'btn btn-success' %>
+    <% end %>
+
+    <br>
+    <br>
+    <br>
+  
+    <div style="positon:relative;" class="fb-share-button" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-type="button"></div>  
 </div>
-<hr>
-<p class="single_event">
-  <br>
-<div style="position: relative; float:right;"><b>Created by: </b><%= link_to User.find_by_id(@event.user_id).first_name, User.find_by_id(@event.user_id) %><div>
-</p>
+
+  <hr>
+  <p class="single_event">
+    <br>
+    <div style="position: relative; float:right;"><b>Created by: </b><%= link_to User.find_by_id(@event.user_id).first_name, User.find_by_id(@event.user_id) %><div>
+  </p>
