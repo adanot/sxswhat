@@ -114,7 +114,7 @@ function userTyped(cb1, cb2, e){
 
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 col-date">
       </br>
       Free show&nbsp;
       <%= f.check_box :free, :default => false %>
@@ -122,15 +122,15 @@ function userTyped(cb1, cb2, e){
       <br>
       Free w/ RSVP&nbsp;
       <%= f.check_box :rsvp, :default => false %>
-      <br>
-      <br>
+	<br>
+	<br>
       <%= f.label :price %>	
       <div class="input-group"> 
         <span class="input-group-addon" style="height:100%"> $</span>
 	<%= f.text_field :price, :placeholder => "15", :default => 0, class: 'col-sm-3' %>
       </div>
     </div>
-    <div class="col-md-6 offset1">
+    <div class="col-md-6">
       &nbsp;
       <%= f.select :age, options_for_select([['All Ages', 'All Ages'] , ['18+', '18+'] ,['21+', '21+']]) %>
     <br>
@@ -143,7 +143,7 @@ function userTyped(cb1, cb2, e){
   </div>
   <div class= "row">
     <br>
-    <div class="col-md-6 offset5">
+    <div class="col-md-6 col-md-offset-5">
       <%= f.submit "Create event", class: "btn btn-large btn-primary" if params[:action] == 'new' || params[:action] == 'create' %>
       <%= f.submit "Update event", class: "btn btn-large btn-primary" if params[:action] == 'edit' || params[:action] == 'update' %>
     </div>
