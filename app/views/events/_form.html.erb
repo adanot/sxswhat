@@ -83,21 +83,6 @@
       <%= f.text_field :tend, class: 'end_timepicker col-sm-4' unless @event.tend %>
       <%= f.text_field :tend, class: 'end_timepicker col-sm-4', value: @event.tend.strftime("%I:%M %p") if @event.tend %>
     </div>
-    <div class="col-xs-5">
-      </br>
-      Free show&nbsp;
-      <%= f.check_box :free, :default => false %>
-      <br>
-      <br>
-      Free w/ RSVP&nbsp;
-      <%= f.check_box :rsvp, :default => false %>
-      <br>
-      <br>
-      <%= f.label :price %>	
-      <div class="input-group"> 
-        <span class="input-group-addon" style="height:100%"> $</span>
-	<%= f.text_field :price, :placeholder => "15", :default => 0, class: 'col-sm-3' %>
-      </div>
   </div>
 
   <div class="row">
