@@ -63,7 +63,7 @@
     <hr>
   </div>
   <div class="row">
-    <div class="col-md-6">	
+    <div class="col-md-6 col-date">	
       <%= f.label :date %>
       <br/>
       <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker col-sm-4', value: calendar_starting_date  if @event.date.nil? %>
