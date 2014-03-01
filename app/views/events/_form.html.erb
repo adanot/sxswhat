@@ -83,7 +83,7 @@
       <%= f.text_field :tend, class: 'end_timepicker col-sm-4' unless @event.tend %>
       <%= f.text_field :tend, class: 'end_timepicker col-sm-4', value: @event.tend.strftime("%I:%M %p") if @event.tend %>
     </div>
-    <div class="col-md-6">
+    <div class="col-xs-5">
       </br>
       Free show&nbsp;
       <%= f.check_box :free, :default => false %>
