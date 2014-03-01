@@ -23,7 +23,7 @@ $("document").ready(function(){
 
 <h1><%= @event.name %></h1>
 <div class="row">
-  <div class="col-md-6"><%= simple_format(url_link(@event.content)) %></div>
+  <div class="col-md-6" style="clear:both;"><%= simple_format(url_link(@event.content)) %></div>
   <div class="col-md-4 col-md-offset-1">
 <center>
     <h3><%= @event.date.strftime('%A, %b %d') %></h3>
