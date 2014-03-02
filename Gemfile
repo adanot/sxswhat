@@ -10,7 +10,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'friendly_id', '~> 5.0.0'
 group :development, :test do
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg', '0.15.1'
 gem 'rack-mini-profiler'
 gem 'pry'
 gem 'rspec-rails','2.13.1'
