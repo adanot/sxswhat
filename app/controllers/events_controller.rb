@@ -83,8 +83,6 @@ class EventsController < ApplicationController
    @events = Event.all
   end
 
-  def top
-  end
 
   def add
 	current_user.age = 1
