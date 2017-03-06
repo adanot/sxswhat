@@ -37,25 +37,25 @@
   <div class="row">
     <div class="col-md-6">	
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :class=>"form-control" %>
 
       Venue
-      <%= f.text_field :location %>
+      <%= f.text_field :location, :class=>"form-control" %>
 	
       <%= f.label :address %>
-      <%= f.text_field :address %>
+      <%= f.text_field :address, :class=>"form-control" %>
     </div>
 
     <div class= "row">
     <div class="col-md-6 offset1">
       Description
-      <%= f.text_area :content, size: "20x10" %>
+      <%= f.text_area :content, :class=>"form-control", size: "20x10" %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
       Tickets/RSVP(link)
-      <%= f.text_field :link, placeholder: 'http://www.examplesite.com/tickets' %>
+      <%= f.text_field :link, :class=>"form-control", placeholder: 'http://www.examplesite.com/tickets' %>
     </div>
   </div>
 
@@ -66,22 +66,22 @@
     <div class="col-md-6 col-date">	
       <%= f.label :date %>
       <br/>
-      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker col-sm-4', value: calendar_starting_date  if @event.date.nil? %>
-      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker col-sm-4', value: @event.date.strftime("%m/%d/%Y")  unless @event.date.nil? %>
+      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker col-sm-4 form-control', value: calendar_starting_date  if @event.date.nil? %>
+      <%= f.text_field :date, :placeholder => "mm/dd/yyy", class: 'datepicker col-sm-4 form-control', value: @event.date.strftime("%m/%d/%Y")  unless @event.date.nil? %>
     </div>
 
     <div class="col-md-4">	
       </br>
       Start Time
       </br>
-      <%= f.text_field :tstart, class: 'start_timepicker col-sm-4 ' unless @event.tstart %>
-      <%= f.text_field :tstart, class: 'start_timepicker col-sm-4 ', value: @event.tstart.strftime("%I:%M %p") if @event.tstart %>
+      <%= f.text_field :tstart, class: 'start_timepicker col-sm-4 form-control ' unless @event.tstart %>
+      <%= f.text_field :tstart, class: 'start_timepicker col-sm-4 form-control ', value: @event.tstart.strftime("%I:%M %p") if @event.tstart %>
       </br>
       </br>
       End Time&nbsp; 
       </br>
-      <%= f.text_field :tend, class: 'end_timepicker col-sm-4' unless @event.tend %>
-      <%= f.text_field :tend, class: 'end_timepicker col-sm-4', value: @event.tend.strftime("%I:%M %p") if @event.tend %>
+      <%= f.text_field :tend, class: 'end_timepicker col-sm-4 form-control' unless @event.tend %>
+      <%= f.text_field :tend, class: 'end_timepicker col-sm-4 form-control', value: @event.tend.strftime("%I:%M %p") if @event.tend %>
     </div>
   </div>
 
@@ -117,17 +117,17 @@ function userTyped(cb1, cb2, e){
     <div class="col-md-6 col-date">
       </br>
       Free show&nbsp;
-      <%= f.check_box :free, :default => false %>
+      <%= f.check_box :free, :class=>"form-control", :default => false %>
       <br>
       <br>
       Free w/ RSVP&nbsp;
-      <%= f.check_box :rsvp, :default => false %>
+      <%= f.check_box :rsvp, :class=>"form-control", :default => false %>
 	<br>
 	<br>
       <%= f.label :price %>	
       <div class="input-group"> 
         <span class="input-group-addon" style="height:100%"> $</span>
-	  <%= f.text_field :price, :class=>"form-control", :placeholder => "15", :default => 0, class: 'col-sm-3' %>
+	  <%= f.text_field :price, :placeholder => "15", :default => 0, class: 'col-sm-3 form-control' %>
       </div>
     </div>
     <div class="col-md-6">
@@ -138,7 +138,7 @@ function userTyped(cb1, cb2, e){
     <div class="col-md-6 offset1">
       <br>
       Free drinks? &nbsp;
-      <%= f.check_box :drinks, :default => false %>
+      <%= f.check_box :drinks, :class=>"form-control", :default => false %>
     </div>
   </div>
   <div class= "row">

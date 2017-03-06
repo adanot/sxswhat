@@ -1,4 +1,4 @@
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false&v=3.exp"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&v=3.exp"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.gmap.min.js"></script>
 <script type="text/javascript">

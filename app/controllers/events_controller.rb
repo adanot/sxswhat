@@ -30,9 +30,6 @@ class EventsController < ApplicationController
     redirect_to current_user
   end
 
-  def index
-	@events = Event.paginate(:page => params[:page], :per_page => 30)
-  end 
  
   def create
     @event = current_user.events.new(event_params)
