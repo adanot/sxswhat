@@ -6,30 +6,30 @@
       <%= render 'shared/error_messages' %>
       <div class="row">
       <div class="col-md-6">
-      <%= f.text_field :first_name, :placeholder => "First Name" %>
+      <%= f.text_field :first_name, :class=>'form-control', :placeholder => "First Name" %>
       </div>
 
       <div class="col-md-6" style="float:right; overflow:hidden;">
-      <%= f.text_field :last_name, :placeholder => "Last Name" %>
+      <%= f.text_field :last_name, :class=>'form-control', :placeholder => "Last Name" %>
        </div>
       </div>
 	
       <div class="row">
       <div class="col-md-12">
-      <%= f.text_field :displayname, :placeholder => "Display Name" %>
+      <%= f.text_field :displayname, :class=>'form-control', :placeholder => "Display Name" %>
       </div>
       </div>
       <div class="row">
       <div class="col-md-12">
-      <%= f.text_field :email, :placeholder => "Email Address" %>
+      <%= f.text_field :email, :class=>'form-control', :placeholder => "Email Address" %>
       </div>
       </div>
 	<div class="row">
 	<div class="col-md-6">
-      <%= f.password_field :password, :placeholder => "Password" %>
+      <%= f.password_field :password, :class=>'form-control', :placeholder => "Password" %>
 	</div>
 	<div class="col-md-6" style="float:right; overflow:hidden;">
-      <%= f.password_field :password_confirmation, :placeholder => "Confirm Password" %>
+      <%= f.password_field :password_confirmation, :class=>'form-control', :placeholder => "Confirm Password" %>
 </div>
 </div>
 
@@ -37,7 +37,7 @@
       <div class="row">
       <div class="col-md-12">
 	<div class="span">
-	<%= f.check_box :emailopt, :checked=>true, :default => true %>
+	<%= f.check_box :emailopt, :class=>'form-control', :checked=>true, :default => true %>
 	</div>
 	<div class="span5 ">Yes, I would like to receive awesome, exclusive updates and offers from Censored Showlist.
       </div>
@@ -48,7 +48,7 @@
       <div class="row">
       <div class="col-md-12">
 	<div class="span">
-	<%= f.check_box :privacy %>
+	<%= f.check_box :privacy, :class=>'form-control' %>
 	</div>
 	<div class="span5">I have read and I agree to the Terms of Service and <%= link_to "Privacy Policy", privacy_path %> of Censored Showlist
 </div>

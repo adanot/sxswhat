@@ -127,7 +127,7 @@ function userTyped(cb1, cb2, e){
       <%= f.label :price %>	
       <div class="input-group"> 
         <span class="input-group-addon" style="height:100%"> $</span>
-	<%= f.text_field :price, :placeholder => "15", :default => 0, class: 'col-sm-3' %>
+	  <%= f.text_field :price, :class=>"form-control", :placeholder => "15", :default => 0, class: 'col-sm-3' %>
       </div>
     </div>
     <div class="col-md-6">
@@ -150,3 +150,4 @@ function userTyped(cb1, cb2, e){
   </div>
 <% end %>
 
+</div>
