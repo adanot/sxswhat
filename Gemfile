@@ -13,7 +13,7 @@ group :development, :test do
 gem 'sqlite3'
 gem 'rack-mini-profiler'
 gem 'pry'
-gem 'rspec-rails','2.13.1'
+# gem 'rspec-rails','2.13.1'
 end
 
 group :test do
