@@ -311,10 +311,8 @@ table {
   width: 100%;
 
 }
-
-
-
-
-
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th{
+  background-color: #2f2f2f;
+}
 
 
